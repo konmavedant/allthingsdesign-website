@@ -3,7 +3,6 @@ import type { Metadata } from "next"
 import { Outfit } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/components/navbar"
-import TopBanner from "@/components/top-banner"
 import Footer from "@/components/footer"
 
 const outfit = Outfit({ subsets: ["latin"] })
@@ -23,7 +22,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={outfit.className}>
-        <TopBanner />
         <Navbar />
         {children}
         <Footer />
