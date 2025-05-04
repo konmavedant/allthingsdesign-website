@@ -74,11 +74,11 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center space-x-4">
           <Button
-            variant="outline"
-            className="border-2 hover:bg-green-500 hover:text-white hover:border-green-500 transition-all border-white text-white"
-          >
-            Contact us
-          </Button>
+  className="bg-white text-green-400 border border-green-400 hover:bg-gray-100 hover:text-green-400 focus:bg-gray-100 active:bg-gray-100"
+>
+  Contact us
+</Button>
+
           <Button className="bg-green-500 hover:bg-green-600 text-white">
             <span className="mr-2">
               <svg
@@ -145,9 +145,13 @@ export default function Navbar() {
               Resources
             </Link>
             <div className="flex flex-col space-y-2 pt-2 border-t border-white/10">
-              <Button variant="outline" className="border-green-400 text-green-400 hover:bg-green-400 hover:text-white">
-                Contact us
-              </Button>
+              <Button
+  variant="outline"
+  className="bg-white text-green-400 border-green-400 hover:bg-gray-100 hover:text-green-400"
+>
+  Contact us
+</Button>
+
               <Button className="bg-green-500 hover:bg-green-600">
                 <span className="mr-2">
                   <svg

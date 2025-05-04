@@ -102,27 +102,28 @@ export default function Hero() {
               Enquire Now
             </Button>
             <Button
-              size="lg"
-              variant="outline"
-              className="text-white border-white hover:bg-white/10 text-lg px-8 py-6 rounded-full"
-            >
-              View Projects
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="ml-2"
-              >
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </Button>
+  size="lg"
+  variant="outline"
+  className="bg-transparent text-white border-white hover:bg-white/10 text-lg px-8 py-6 rounded-full"
+>
+  View Projects
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="ml-2"
+  >
+    <path d="M5 12h14"></path>
+    <path d="m12 5 7 7-7 7"></path>
+  </svg>
+</Button>
+
           </motion.div>
         </div>
       </div>
