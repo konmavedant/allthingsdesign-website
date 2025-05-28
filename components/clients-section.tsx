@@ -12,6 +12,7 @@ export default function ClientsSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: false, amount: 0.1 })
   const [counting, setCounting] = useState(false)
+  const [animationError, setAnimationError] = useState(false)
 
   useEffect(() => {
     if (isInView) {
@@ -108,7 +109,23 @@ export default function ClientsSection() {
               </div>
               <h3 className="text-4xl font-light mb-2 text-black flex items-center justify-center">
                 <span>{stat.prefix}</span>
-                {counting && <CountUp start={0} end={stat.value} duration={2.5} separator="," suffix={stat.suffix} />}
+                {counting && !animationError && (
+                  <CountUp
+                    start={0}
+                    end={stat.value}
+                    duration={2.5}
+                    separator=","
+                    suffix={stat.suffix}
+                    onError={() => setAnimationError(true)}
+                    preserveValue
+                  />
+                )}
+                {animationError && (
+                  <span>
+                    {stat.value}
+                    {stat.suffix}
+                  </span>
+                )}
               </h3>
               <p className="text-gray-600">{stat.label}</p>
             </motion.div>

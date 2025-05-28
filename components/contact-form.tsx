@@ -1,18 +1,34 @@
 "use client"
 
+import type React from "react"
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { motion } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { useInView } from "framer-motion"
 import Image from "next/image"
 
 export default function ContactForm() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: false, amount: 0.1 })
+
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitting(false)
+      setSubmitMessage("Thank you! We'll get back to you within 24 hours.")
+    }, 2000)
+  }
 
   return (
     <section id="contact" className="py-20 bg-white" ref={ref}>
@@ -38,7 +54,7 @@ export default function ContactForm() {
               transition={{ duration: 0.8 }}
               className="order-2 lg:order-1"
             >
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="name" className="text-gray-700">
@@ -139,10 +155,17 @@ export default function ContactForm() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-black hover:bg-gray-800 text-white py-6 rounded-none text-lg font-light"
+                  disabled={isSubmitting}
+                  className="w-full bg-black hover:bg-gray-800 text-white py-6 rounded-none text-lg font-light disabled:opacity-50"
                 >
-                  Submit
+                  {isSubmitting ? "Submitting..." : "Submit"}
                 </Button>
+
+                {submitMessage && (
+                  <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-md">
+                    <p className="text-green-800">{submitMessage}</p>
+                  </div>
+                )}
               </form>
             </motion.div>
 

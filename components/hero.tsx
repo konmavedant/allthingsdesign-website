@@ -38,25 +38,25 @@ export default function Hero() {
   const textVariants = {
     hidden: {
       opacity: 0,
-      y: 50,
-      scale: 0.9,
+      y: 60,
+      scale: 0.95,
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        duration: 1,
-        ease: "easeOut",
+        duration: 1.2,
+        ease: [0.4, 0, 0.2, 1],
       },
     },
     exit: {
       opacity: 0,
-      y: -50,
-      scale: 1.1,
+      y: -60,
+      scale: 1.05,
       transition: {
-        duration: 0.5,
-        ease: "easeIn",
+        duration: 0.6,
+        ease: [0.4, 0, 0.2, 1],
       },
     },
   }
@@ -67,10 +67,10 @@ export default function Hero() {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
-          initial={{ opacity: 0, scale: 1.1 }}
+          initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.9 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 2, ease: [0.4, 0, 0.2, 1] }}
           className="absolute inset-0 z-0"
           style={{
             backgroundImage: `url('${slides[currentSlide].image}')`,
@@ -114,8 +114,6 @@ export default function Hero() {
             transition={{ delay: 1, duration: 0.8 }}
             className="space-y-8"
           >
-           
-
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -128,19 +126,31 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2, duration: 0.8 }}
+              transition={{ delay: 2, duration: 1.2, ease: "easeOut" }}
               className="flex flex-col sm:flex-row gap-6 pt-8"
             >
               <Button
                 size="lg"
-                className="bg-black hover:bg-gray-800 text-white text-lg px-12 py-6 rounded-none font-light"
+                className="bg-black hover:bg-gray-800 text-white text-lg px-12 py-6 rounded-none font-light transition-all duration-500 hover:scale-105"
+                onClick={() => {
+                  const element = document.getElementById("contact")
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth", block: "start" })
+                  }
+                }}
               >
                 Enquire Now
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-black text-black hover:bg-black hover:text-white text-lg px-12 py-6 rounded-none font-light"
+                className="border-black text-black hover:bg-black hover:text-white text-lg px-12 py-6 rounded-none font-light transition-all duration-500 hover:scale-105"
+                onClick={() => {
+                  const element = document.getElementById("projects")
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth", block: "start" })
+                  }
+                }}
               >
                 View Projects
               </Button>

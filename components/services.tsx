@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import { useInView } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
@@ -52,6 +52,19 @@ export default function Services() {
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev === 0 ? services.length - 1 : prev - 1))
   }
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        prevSlide()
+      } else if (e.key === "ArrowRight") {
+        nextSlide()
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [])
 
   return (
     <section className="py-20 bg-white" ref={ref}>
@@ -141,10 +154,10 @@ export default function Services() {
           {/* Carousel Controls */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white shadow-lg p-2 rounded-full"
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white shadow-lg p-3 rounded-full hover:bg-gray-50 transition-colors z-10"
             aria-label="Previous service"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={24} className="text-gray-700" />
           </button>
           <button
             onClick={nextSlide}

@@ -2,12 +2,18 @@
 
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { useInView } from "framer-motion"
 
 export default function ProjectsShowcase() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: false, amount: 0.2 })
+
+  const [imageErrors, setImageErrors] = useState<{ [key: number]: boolean }>({})
+
+  const handleImageError = (projectId: number) => {
+    setImageErrors((prev) => ({ ...prev, [projectId]: true }))
+  }
 
   const projects = [
     {
@@ -49,7 +55,7 @@ export default function ProjectsShowcase() {
   ]
 
   return (
-    <section className="py-20 bg-white" ref={ref}>
+    <section id="projects" className="py-20 bg-white" ref={ref}>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -72,10 +78,11 @@ export default function ProjectsShowcase() {
             >
               <div className="relative h-80 overflow-hidden mb-4">
                 <Image
-                  src={project.image || "/placeholder.svg"}
+                  src={imageErrors[project.id] ? "/placeholder.svg?height=320&width=400" : project.image}
                   alt={project.name}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  onError={() => handleImageError(project.id)}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
               </div>

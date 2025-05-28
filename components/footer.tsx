@@ -3,9 +3,10 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
+import Image from "next/image"
 
 export default function Footer() {
-  const cityPages = ["Mumbai", "Navi Mumbai", "Pune", "Chennai", "Hyderabad", "Delhi", "Bangalore"]
+  const cities = ["Mumbai", "Navi Mumbai", "Pune", "Chennai", "Hyderabad", "Delhi", "Bangalore"]
 
   return (
     <footer className="bg-black text-white">
@@ -17,9 +18,7 @@ export default function Footer() {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <h1 className="text-2xl font-light tracking-tight">
-              All Things <span className="font-medium">Design</span>
-            </h1>
+            <Image src="/images/logo.png" alt="All Things Design" width={150} height={75} className="h-16 w-auto" />
             <p className="text-gray-400 leading-relaxed">
               Transform your workspace in just 75 days with high-performance, brand-driven designs that enhance
               productivity.
@@ -103,15 +102,15 @@ export default function Footer() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="space-y-4"
           >
-            <h3 className="text-xl font-medium mb-4">City Pages</h3>
+            <h3 className="text-xl font-medium mb-4">Cities</h3>
             <ul className="space-y-2">
-              {cityPages.map((city) => (
+              {cities.map((city) => (
                 <li key={city}>
                   <Link
                     href={`/${city.toLowerCase().replace(" ", "-")}`}
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                    Office Interiors in {city}
+                    {city}
                   </Link>
                 </li>
               ))}
