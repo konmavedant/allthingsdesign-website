@@ -47,15 +47,15 @@ export default function WhyWorkWithUs() {
   ]
 
   return (
-    <section className="py-24 bg-white" ref={ref}>
+    <section className="py-20 bg-white" ref={ref}>
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-bold mb-20 text-center"
+          className="text-3xl md:text-5xl font-light mb-20 text-center text-black"
         >
-          Why Work With <span className="text-green-500">Us</span>?
+          Why Work With Us?
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -65,13 +65,13 @@ export default function WhyWorkWithUs() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="p-8 bg-white rounded-xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-green-200 group"
+              className="p-8 bg-white border border-gray-100 hover:shadow-lg transition-all duration-300 group"
             >
               <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">{reason.icon}</div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-green-500 transition-colors">
+              <h3 className="text-xl font-medium mb-4 text-black group-hover:text-gray-600 transition-colors">
                 {reason.title}
               </h3>
-              <p className="text-gray-700 leading-relaxed">{reason.description}</p>
+              <p className="text-gray-600 leading-relaxed">{reason.description}</p>
             </motion.div>
           ))}
         </div>
@@ -82,7 +82,7 @@ export default function WhyWorkWithUs() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center mt-16"
         >
-          <p className="text-2xl font-bold text-green-500">
+          <p className="text-2xl font-light text-black">
             🚀 Let's Build Your Dream Office—Fast, Efficient, and Hassle-Free!
           </p>
         </motion.div>

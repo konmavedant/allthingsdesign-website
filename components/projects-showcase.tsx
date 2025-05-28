@@ -1,147 +1,92 @@
 "use client"
 
 import Image from "next/image"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef, useState } from "react"
+import { motion } from "framer-motion"
+import { useRef } from "react"
 import { useInView } from "framer-motion"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 
 export default function ProjectsShowcase() {
   const ref = useRef(null)
-  const containerRef = useRef(null)
   const isInView = useInView(ref, { once: false, amount: 0.2 })
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  })
-
-  const x = useTransform(scrollYProgress, [0, 1], [0, -100])
 
   const projects = [
     {
       id: 1,
       image: "/images/office-interior-2.png",
-      alt: "Modern office lounge with green walls and pendant lighting",
+      name: "Trend India Ekkatuthangal",
+      location: "Chennai",
     },
     {
       id: 2,
       image: "/images/office-interior-3.png",
-      alt: "Contemporary office space with blue furniture and wooden flooring",
+      name: "House of Sparsh",
+      location: "Mumbai",
     },
     {
       id: 3,
       image: "/images/office-interior-4.png",
-      alt: "Meeting room with blue ceiling and yellow chairs",
+      name: "Tech Hub Office",
+      location: "Bangalore",
     },
     {
       id: 4,
       image: "/images/office-interior-5.png",
-      alt: "Minimalist office with glass partitions",
+      name: "Corporate Center",
+      location: "Delhi",
     },
     {
       id: 5,
       image: "/images/office-interior-6.png",
-      alt: "Modern office with collaborative spaces",
+      name: "Creative Studio",
+      location: "Pune",
     },
     {
       id: 6,
       image: "/images/office-interior-7.png",
-      alt: "Bright office with natural lighting",
-    },
-    {
-      id: 7,
-      image: "/images/office-interior-8.png",
-      alt: "Executive office with elegant design",
+      name: "Executive Suites",
+      location: "Hyderabad",
     },
   ]
 
-  // For mobile scrolling
-  const [scrollPosition, setScrollPosition] = useState(0)
-  const scrollAmount = 300
-
-  const handleScroll = (direction) => {
-    const container = document.getElementById("project-scroll-container")
-    if (container) {
-      if (direction === "left") {
-        container.scrollBy({ left: -scrollAmount, behavior: "smooth" })
-        setScrollPosition(Math.max(0, scrollPosition - scrollAmount))
-      } else {
-        container.scrollBy({ left: scrollAmount, behavior: "smooth" })
-        setScrollPosition(scrollPosition + scrollAmount)
-      }
-    }
-  }
-
   return (
-    <div ref={ref} className="relative overflow-hidden py-10 bg-black">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.8 }}
-        className="container mx-auto px-4 mb-8"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold text-white text-center">Our Latest Projects</h2>
-      </motion.div>
-
-      {/* Desktop Horizontal Scroll */}
-      <div className="hidden md:block relative">
-        <motion.div ref={containerRef} style={{ x: `${x}%` }} className="flex space-x-4 py-4 w-[300%]">
-          {projects.map((project) => (
-            <div key={project.id} className="relative w-[500px] h-[300px] flex-shrink-0 overflow-hidden rounded-xl">
-              <Image
-                src={project.image || "/placeholder.svg"}
-                alt={project.alt}
-                fill
-                className="object-cover transition-transform duration-700 hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                <div className="p-6">
-                  <h3 className="text-white text-xl font-semibold">{project.alt}</h3>
-                  <p className="text-green-300 mt-2">View Project</p>
-                </div>
-              </div>
-            </div>
-          ))}
+    <section className="py-20 bg-white" ref={ref}>
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-5xl font-light mb-6 text-black">Our Projects</h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">Discover our portfolio of inspiring office spaces</p>
         </motion.div>
-      </div>
 
-      {/* Mobile Horizontal Scroll with Buttons */}
-      <div className="md:hidden relative">
-        <div className="relative">
-          <button
-            onClick={() => handleScroll("left")}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 text-white p-2 rounded-full"
-            aria-label="Scroll left"
-          >
-            <ChevronLeft size={24} />
-          </button>
-
-          <div
-            id="project-scroll-container"
-            className="flex overflow-x-auto scrollbar-hide py-4 px-4 space-x-4"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {projects.map((project) => (
-              <div key={project.id} className="relative w-[280px] h-[200px] flex-shrink-0 overflow-hidden rounded-xl">
-                <Image src={project.image || "/placeholder.svg"} alt={project.alt} fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                  <div className="p-4">
-                    <h3 className="text-white text-sm font-semibold">{project.alt}</h3>
-                  </div>
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group cursor-pointer"
+            >
+              <div className="relative h-80 overflow-hidden mb-4">
+                <Image
+                  src={project.image || "/placeholder.svg"}
+                  alt={project.name}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
               </div>
-            ))}
-          </div>
-
-          <button
-            onClick={() => handleScroll("right")}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 text-white p-2 rounded-full"
-            aria-label="Scroll right"
-          >
-            <ChevronRight size={24} />
-          </button>
+              <div className="space-y-2">
+                <h3 className="text-xl font-medium text-black">{project.name}</h3>
+                <p className="text-gray-600">{project.location}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }

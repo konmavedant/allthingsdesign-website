@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 import { useInView } from "framer-motion"
 import CountUp from "react-countup"
+import { Building, MapPin, ConeIcon as Crane } from "lucide-react"
 
 export default function ClientsSection() {
   const ref = useRef(null)
@@ -28,13 +29,34 @@ export default function ClientsSection() {
   ]
 
   const stats = [
-    { id: 1, icon: "🏢", value: 300000, suffix: "+", prefix: "", label: "Sq. Ft. of Office Space Designed" },
-    { id: 2, icon: "🌍", value: 5, suffix: "+", prefix: "", label: "Cities Served" },
-    { id: 3, icon: "🏗", value: 100, suffix: "+", prefix: "", label: "Office Spaces Designed & Built" },
+    {
+      id: 1,
+      icon: Building,
+      value: 300000,
+      suffix: "+",
+      prefix: "",
+      label: "Sq. Ft. of Office Space Designed",
+    },
+    {
+      id: 2,
+      icon: MapPin,
+      value: 5,
+      suffix: "+",
+      prefix: "",
+      label: "Cities Served",
+    },
+    {
+      id: 3,
+      icon: Crane,
+      value: 100,
+      suffix: "+",
+      prefix: "",
+      label: "Office Spaces Designed & Built",
+    },
   ]
 
   return (
-    <section className="py-24 bg-gray-50" ref={ref}>
+    <section className="py-20 bg-gray-50" ref={ref}>
       <div className="container mx-auto px-4">
         {/* Client Logos */}
         <motion.div
@@ -72,21 +94,21 @@ export default function ClientsSection() {
         </motion.div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.id}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+              className="text-center"
             >
-              <div className="text-5xl mb-4">{stat.icon}</div>
-              <h3 className="text-4xl font-bold mb-2 text-green-600 flex items-center justify-center">
+              <div className="flex justify-center mb-4">
+                <stat.icon size={48} className="text-black" />
+              </div>
+              <h3 className="text-4xl font-light mb-2 text-black flex items-center justify-center">
                 <span>{stat.prefix}</span>
-                {counting && (
-                  <CountUp start={0} end={stat.value} duration={2.5} separator="," decimal="," suffix={stat.suffix} />
-                )}
+                {counting && <CountUp start={0} end={stat.value} duration={2.5} separator="," suffix={stat.suffix} />}
               </h3>
               <p className="text-gray-600">{stat.label}</p>
             </motion.div>
@@ -100,42 +122,28 @@ export default function ClientsSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center"
         >
-          <p className="text-2xl mb-10 text-gray-800">
+          <p className="text-2xl mb-10 text-black font-light">
             Let's build a workspace that works for you—designed for efficiency, built for Success. 🚀
           </p>
 
           <div className="flex flex-col md:flex-row justify-center gap-4 mb-8">
             <Button
               size="lg"
-              className="bg-green-500 hover:bg-green-600 text-white flex items-center gap-2 py-6 px-8 rounded-full"
+              className="bg-black hover:bg-gray-800 text-white flex items-center gap-2 py-6 px-8 rounded-none font-light"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-phone"
-              >
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-              +91 9326990075
+              📞 +91 9326990075
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="border-green-500 text-green-500 hover:bg-green-500 hover:text-white py-6 px-8 rounded-full"
+              className="border-black text-black hover:bg-black hover:text-white py-6 px-8 rounded-none font-light"
             >
               🔹 Get a Free Test Fitout in 24 Hours
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="border-green-500 text-green-500 hover:bg-green-500 hover:text-white py-6 px-8 rounded-full"
+              className="border-black text-black hover:bg-black hover:text-white py-6 px-8 rounded-none font-light"
             >
               🔹 Enquire Now
             </Button>
