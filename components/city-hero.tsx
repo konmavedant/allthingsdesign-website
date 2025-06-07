@@ -1,12 +1,9 @@
 "use client"
 
-import type React from "react"
-
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useState } from "react"
 
 interface CityHeroProps {
   city: string
@@ -14,19 +11,6 @@ interface CityHeroProps {
 }
 
 export default function CityHero({ city, image }: CityHeroProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitMessage, setSubmitMessage] = useState("")
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitMessage("Thank you! We'll contact you soon.")
-    }, 2000)
-  }
-
   return (
     <section className="relative min-h-screen flex items-center">
       <div
@@ -63,7 +47,7 @@ export default function CityHero({ city, image }: CityHeroProps) {
             className="bg-white/95 backdrop-blur-sm p-8 rounded-lg shadow-xl"
           >
             <h3 className="text-2xl font-medium mb-6 text-black">Get Your Free Consultation</h3>
-            <form className="space-y-4" onSubmit={handleSubmit}>
+            <form className="space-y-4">
               <div>
                 <Label htmlFor="name" className="text-gray-700">
                   Name
@@ -88,19 +72,7 @@ export default function CityHero({ city, image }: CityHeroProps) {
                 </Label>
                 <Input id="area" className="mt-1" placeholder="Project area" />
               </div>
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-green-600 hover:bg-green-700 text-white disabled:opacity-50"
-              >
-                {isSubmitting ? "Submitting..." : "Get Free Quote"}
-              </Button>
-
-              {submitMessage && (
-                <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-md">
-                  <p className="text-green-800 text-sm">{submitMessage}</p>
-                </div>
-              )}
+              <Button className="w-full bg-green-600 hover:bg-green-700 text-white">Get Free Quote</Button>
             </form>
           </motion.div>
         </div>

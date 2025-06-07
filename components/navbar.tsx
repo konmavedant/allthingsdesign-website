@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { Menu, X, ChevronDown } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -12,10 +12,7 @@ import { usePathname } from "next/navigation"
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [citiesDropdownOpen, setCitiesDropdownOpen] = useState(false)
   const pathname = usePathname()
-
-  const cities = ["Mumbai", "Pune", "Chennai", "Bangalore", "Hyderabad", "Delhi", "Navi Mumbai"]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,9 +55,18 @@ export default function Navbar() {
           >
             Gallery
           </Link>
-
-          
-
+          <Link
+            href="/#pricing"
+            className="hover:text-green-600 transition-colors text-lg font-light"
+            onClick={(e) => {
+              if (pathname === "/") {
+                e.preventDefault()
+                document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })
+              }
+            }}
+          >
+            Pricing
+          </Link>
           <Link
             href="/#contact"
             className="hover:text-green-600 transition-colors text-lg font-light"
@@ -78,7 +84,7 @@ export default function Navbar() {
         {/* CTA Button */}
         <div className="hidden md:flex items-center">
           <Button
-            className="bg-green-600 hover:bg-green-700 text-white flex items-center gap-2"
+            className="bg-green-700 hover:bg-green-800 text-white flex items-center gap-2"
             onClick={() => window.open("tel:+919326990075", "_self")}
           >
             <Phone size={16} />
@@ -117,41 +123,18 @@ export default function Navbar() {
               >
                 Gallery
               </Link>
-
-              {/* Mobile Cities Dropdown */}
-              <div className="py-2">
-                <button
-                  className="flex items-center justify-between w-full hover:text-green-600 transition-colors text-lg font-light"
-                  onClick={() => setCitiesDropdownOpen(!citiesDropdownOpen)}
-                >
-                  Cities{" "}
-                  <ChevronDown size={16} className={`transition-transform ${citiesDropdownOpen ? "rotate-180" : ""}`} />
-                </button>
-
-                <AnimatePresence>
-                  {citiesDropdownOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="mt-2 pl-4 space-y-2"
-                    >
-                      {cities.map((city) => (
-                        <Link
-                          key={city}
-                          href={`/${city.toLowerCase().replace(" ", "-")}`}
-                          className="block py-1 hover:text-green-600 transition-colors text-gray-600"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          {city}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
+              <Link
+                href="/#pricing"
+                className="py-2 hover:text-green-600 transition-colors text-lg font-light"
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  if (pathname === "/") {
+                    document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })
+                  }
+                }}
+              >
+                Pricing
+              </Link>
               <Link
                 href="#contact"
                 className="py-2 hover:text-green-600 transition-colors text-lg font-light"
@@ -164,7 +147,7 @@ export default function Navbar() {
               </Link>
 
               <Button
-                className="bg-green-600 hover:bg-green-700 text-white flex items-center gap-2 mt-2"
+                className="bg-green-700 hover:bg-green-800 text-white flex items-center gap-2 mt-2"
                 onClick={() => window.open("tel:+919326990075", "_self")}
               >
                 <Phone size={16} />

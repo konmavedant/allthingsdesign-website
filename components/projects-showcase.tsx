@@ -2,18 +2,14 @@
 
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { useInView } from "framer-motion"
+import { useRouter } from "next/navigation"
 
 export default function ProjectsShowcase() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: false, amount: 0.2 })
-
-  const [imageErrors, setImageErrors] = useState<{ [key: number]: boolean }>({})
-
-  const handleImageError = (projectId: number) => {
-    setImageErrors((prev) => ({ ...prev, [projectId]: true }))
-  }
+  const router = useRouter()
 
   const projects = [
     {
@@ -54,6 +50,10 @@ export default function ProjectsShowcase() {
     },
   ]
 
+  const handleProjectClick = () => {
+    router.push("/gallery")
+  }
+
   return (
     <section id="projects" className="py-20 bg-white" ref={ref}>
       <div className="container mx-auto px-4">
@@ -75,19 +75,24 @@ export default function ProjectsShowcase() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group cursor-pointer"
+              onClick={handleProjectClick}
             >
               <div className="relative h-80 overflow-hidden mb-4">
                 <Image
-                  src={imageErrors[project.id] ? "/placeholder.svg?height=320&width=400" : project.image}
+                  src={project.image || "/placeholder.svg"}
                   alt={project.name}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  onError={() => handleImageError(project.id)}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <div className="bg-green-700 text-white px-6 py-2 rounded-none font-light">View in Gallery</div>
+                </div>
               </div>
               <div className="space-y-2">
-                <h3 className="text-xl font-medium text-black">{project.name}</h3>
+                <h3 className="text-xl font-medium text-black group-hover:text-green-700 transition-colors">
+                  {project.name}
+                </h3>
                 <p className="text-gray-600">{project.location}</p>
               </div>
             </motion.div>

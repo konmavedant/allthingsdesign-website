@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState } from "react"
 import { useInView } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
@@ -34,8 +34,6 @@ export default function Services() {
     {
       id: 3,
       title: "Design & Build Your Dream Office – Ready in Just 75 Days",
-      description:
-        "Effortless execution, precision craftsmanship, and brand-focused interiors—delivered on time and within budget.",
       description2:
         "Our Design & Build service is crafted to ensure a stress-free, efficient, and premium office transformation. We bring together top-tier professionals, use the finest materials, and follow a streamlined process to deliver workspaces that elevate your brand and enhance productivity.",
       description3:
@@ -53,21 +51,8 @@ export default function Services() {
     setCurrentSlide((prev) => (prev === 0 ? services.length - 1 : prev - 1))
   }
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") {
-        prevSlide()
-      } else if (e.key === "ArrowRight") {
-        nextSlide()
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [])
-
   return (
-    <section className="py-20 bg-white" ref={ref}>
+    <section id="services" className="py-20 bg-white" ref={ref}>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -85,6 +70,7 @@ export default function Services() {
             {services.map((service, index) => (
               <motion.div
                 key={service.id}
+                id={index === 0 ? "service-fitout" : index === 1 ? "service-design" : "service-build"}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
@@ -108,7 +94,10 @@ export default function Services() {
                   <p className="text-gray-600 leading-relaxed">{service.description}</p>
                   {service.description2 && <p className="text-gray-600 leading-relaxed">{service.description2}</p>}
                   {service.description3 && <p className="text-gray-600 leading-relaxed">{service.description3}</p>}
-                  <Button className="bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-none font-light">
+                  <Button
+                    className="bg-green-700 hover:bg-green-800 text-white px-8 py-3 rounded-none font-light"
+                    onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                  >
                     {service.cta}
                   </Button>
                 </div>
@@ -124,8 +113,18 @@ export default function Services() {
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-              {services.map((service) => (
-                <div key={service.id} className="w-full flex-shrink-0 px-4">
+              {services.map((service, index) => (
+                <div
+                  key={service.id}
+                  id={
+                    index === 0
+                      ? "service-fitout-mobile"
+                      : index === 1
+                        ? "service-design-mobile"
+                        : "service-build-mobile"
+                  }
+                  className="w-full flex-shrink-0 px-4"
+                >
                   <div className="space-y-6">
                     <div className="relative h-64 w-full overflow-hidden">
                       <Image
@@ -141,7 +140,10 @@ export default function Services() {
                       {service.description2 && (
                         <p className="text-gray-600 text-sm leading-relaxed">{service.description2}</p>
                       )}
-                      <Button className="w-full bg-black hover:bg-gray-800 text-white py-3 rounded-none font-light">
+                      <Button
+                        className="w-full bg-green-700 hover:bg-green-800 text-white py-3 rounded-none font-light"
+                        onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                      >
                         {service.cta}
                       </Button>
                     </div>
@@ -154,10 +156,10 @@ export default function Services() {
           {/* Carousel Controls */}
           <button
             onClick={prevSlide}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white shadow-lg p-3 rounded-full hover:bg-gray-50 transition-colors z-10"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white shadow-lg p-2 rounded-full"
             aria-label="Previous service"
           >
-            <ChevronLeft size={24} className="text-gray-700" />
+            <ChevronLeft size={24} />
           </button>
           <button
             onClick={nextSlide}
@@ -174,7 +176,7 @@ export default function Services() {
                 key={index}
                 onClick={() => setCurrentSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all ${
-                  currentSlide === index ? "bg-black w-8" : "bg-gray-300"
+                  currentSlide === index ? "bg-green-700 w-8" : "bg-gray-300"
                 }`}
                 aria-label={`Go to service ${index + 1}`}
               />

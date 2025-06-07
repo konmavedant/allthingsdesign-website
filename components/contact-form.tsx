@@ -1,34 +1,18 @@
 "use client"
 
-import type React from "react"
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { motion } from "framer-motion"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { useInView } from "framer-motion"
 import Image from "next/image"
 
 export default function ContactForm() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: false, amount: 0.1 })
-
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitMessage, setSubmitMessage] = useState("")
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitMessage("Thank you! We'll get back to you within 24 hours.")
-    }, 2000)
-  }
 
   return (
     <section id="contact" className="py-20 bg-white" ref={ref}>
@@ -54,7 +38,7 @@ export default function ContactForm() {
               transition={{ duration: 0.8 }}
               className="order-2 lg:order-1"
             >
-              <form className="space-y-6" onSubmit={handleSubmit}>
+              <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="name" className="text-gray-700">
@@ -63,7 +47,7 @@ export default function ContactForm() {
                     <Input
                       id="name"
                       required
-                      className="border-gray-300 focus:border-black focus:ring focus:ring-black/20 transition-all rounded-none"
+                      className="border-gray-300 focus:border-green-700 focus:ring focus:ring-green-700/20 transition-all rounded-none"
                       placeholder="Your name"
                     />
                   </div>
@@ -75,7 +59,7 @@ export default function ContactForm() {
                     <Input
                       id="company"
                       required
-                      className="border-gray-300 focus:border-black focus:ring focus:ring-black/20 transition-all rounded-none"
+                      className="border-gray-300 focus:border-green-700 focus:ring focus:ring-green-700/20 transition-all rounded-none"
                       placeholder="Company name"
                     />
                   </div>
@@ -88,7 +72,7 @@ export default function ContactForm() {
                       id="email"
                       type="email"
                       required
-                      className="border-gray-300 focus:border-black focus:ring focus:ring-black/20 transition-all rounded-none"
+                      className="border-gray-300 focus:border-green-700 focus:ring focus:ring-green-700/20 transition-all rounded-none"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -100,7 +84,7 @@ export default function ContactForm() {
                     <Input
                       id="city"
                       required
-                      className="border-gray-300 focus:border-black focus:ring focus:ring-black/20 transition-all rounded-none"
+                      className="border-gray-300 focus:border-green-700 focus:ring focus:ring-green-700/20 transition-all rounded-none"
                       placeholder="Your city"
                     />
                   </div>
@@ -112,7 +96,7 @@ export default function ContactForm() {
                     <Input
                       id="area"
                       required
-                      className="border-gray-300 focus:border-black focus:ring focus:ring-black/20 transition-all rounded-none"
+                      className="border-gray-300 focus:border-green-700 focus:ring focus:ring-green-700/20 transition-all rounded-none"
                       placeholder="Area in sq. ft."
                     />
                   </div>
@@ -124,7 +108,7 @@ export default function ContactForm() {
                     <Input
                       id="mobile"
                       required
-                      className="border-gray-300 focus:border-black focus:ring focus:ring-black/20 transition-all rounded-none"
+                      className="border-gray-300 focus:border-green-700 focus:ring focus:ring-green-700/20 transition-all rounded-none"
                       placeholder="Your phone number"
                     />
                   </div>
@@ -137,7 +121,7 @@ export default function ContactForm() {
                   <Textarea
                     id="message"
                     rows={4}
-                    className="border-gray-300 focus:border-black focus:ring focus:ring-black/20 transition-all rounded-none"
+                    className="border-gray-300 focus:border-green-700 focus:ring focus:ring-green-700/20 transition-all rounded-none"
                     placeholder="Tell us about your project"
                   />
                 </div>
@@ -145,7 +129,7 @@ export default function ContactForm() {
                 <div className="flex items-start space-x-2">
                   <Checkbox
                     id="privacy"
-                    className="text-black border-gray-300 rounded-none data-[state=checked]:bg-black data-[state=checked]:border-black"
+                    className="text-green-700 border-gray-300 rounded-none data-[state=checked]:bg-green-700 data-[state=checked]:border-green-700"
                   />
                   <Label htmlFor="privacy" className="text-sm text-gray-600">
                     I agree to the Privacy Policy and updates from All Things Design.
@@ -155,17 +139,10 @@ export default function ContactForm() {
                 <Button
                   type="submit"
                   size="lg"
-                  disabled={isSubmitting}
-                  className="w-full bg-black hover:bg-gray-800 text-white py-6 rounded-none text-lg font-light disabled:opacity-50"
+                  className="w-full bg-green-700 hover:bg-green-800 text-white py-6 rounded-none text-lg font-light"
                 >
-                  {isSubmitting ? "Submitting..." : "Submit"}
+                  Submit
                 </Button>
-
-                {submitMessage && (
-                  <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-md">
-                    <p className="text-green-800">{submitMessage}</p>
-                  </div>
-                )}
               </form>
             </motion.div>
 
@@ -176,7 +153,7 @@ export default function ContactForm() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="order-1 lg:order-2"
             >
-              <div className="relative h-96 lg:h-full min-h-[500px] overflow-hidden">
+              <div className="relative h-[580px] overflow-hidden">
                 <Image src="/images/office-interior-1.png" alt="Modern office interior" fill className="object-cover" />
                 <div className="absolute inset-0 bg-black/20" />
                 <div className="absolute bottom-8 left-8 text-white">

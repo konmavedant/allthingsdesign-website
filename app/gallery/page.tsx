@@ -77,6 +77,78 @@ export default function Gallery() {
       image: "/images/office-interior-8.png",
       size: "small",
     },
+    {
+      id: 9,
+      name: "Consulting Firm",
+      year: "2024",
+      location: "Delhi",
+      area: "3800 sq ft",
+      image: "/images/office-interior-1.png",
+      size: "small",
+    },
+    {
+      id: 10,
+      name: "Media Production House",
+      year: "2023",
+      location: "Mumbai",
+      area: "4200 sq ft",
+      image: "/images/office-interior-2.png",
+      size: "medium",
+    },
+    {
+      id: 11,
+      name: "E-commerce Headquarters",
+      year: "2024",
+      location: "Bangalore",
+      area: "7500 sq ft",
+      image: "/images/office-interior-3.png",
+      size: "large",
+    },
+    {
+      id: 12,
+      name: "Design Studio",
+      year: "2023",
+      location: "Pune",
+      area: "2200 sq ft",
+      image: "/images/office-interior-4.png",
+      size: "small",
+    },
+    {
+      id: 13,
+      name: "Investment Banking Office",
+      year: "2024",
+      location: "Mumbai",
+      area: "5500 sq ft",
+      image: "/images/office-interior-5.png",
+      size: "medium",
+    },
+    {
+      id: 14,
+      name: "Software Development Center",
+      year: "2023",
+      location: "Chennai",
+      area: "6200 sq ft",
+      image: "/images/office-interior-6.png",
+      size: "large",
+    },
+    {
+      id: 15,
+      name: "Marketing Agency",
+      year: "2024",
+      location: "Hyderabad",
+      area: "3000 sq ft",
+      image: "/images/office-interior-7.png",
+      size: "small",
+    },
+    {
+      id: 16,
+      name: "Pharmaceutical Office",
+      year: "2023",
+      location: "Delhi",
+      area: "4800 sq ft",
+      image: "/images/office-interior-8.png",
+      size: "medium",
+    },
   ]
 
   const getSizeClasses = (size: string) => {
@@ -185,7 +257,7 @@ export default function Gallery() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-black hover:bg-gray-800 text-white px-12 py-4 rounded-none font-light text-lg transition-all duration-300"
+            className="bg-green-700 hover:bg-green-800 text-white px-12 py-4 rounded-none font-light text-lg transition-all duration-300"
             onClick={() => (window.location.href = "/#contact")}
           >
             Start Your Project

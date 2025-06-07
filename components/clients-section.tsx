@@ -12,7 +12,6 @@ export default function ClientsSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: false, amount: 0.1 })
   const [counting, setCounting] = useState(false)
-  const [animationError, setAnimationError] = useState(false)
 
   useEffect(() => {
     if (isInView) {
@@ -105,27 +104,11 @@ export default function ClientsSection() {
               className="text-center"
             >
               <div className="flex justify-center mb-4">
-                <stat.icon size={48} className="text-black" />
+                <stat.icon size={48} className="text-green-700" />
               </div>
               <h3 className="text-4xl font-light mb-2 text-black flex items-center justify-center">
                 <span>{stat.prefix}</span>
-                {counting && !animationError && (
-                  <CountUp
-                    start={0}
-                    end={stat.value}
-                    duration={2.5}
-                    separator=","
-                    suffix={stat.suffix}
-                    onError={() => setAnimationError(true)}
-                    preserveValue
-                  />
-                )}
-                {animationError && (
-                  <span>
-                    {stat.value}
-                    {stat.suffix}
-                  </span>
-                )}
+                {counting && <CountUp start={0} end={stat.value} duration={2.5} separator="," suffix={stat.suffix} />}
               </h3>
               <p className="text-gray-600">{stat.label}</p>
             </motion.div>
@@ -146,23 +129,23 @@ export default function ClientsSection() {
           <div className="flex flex-col md:flex-row justify-center gap-4 mb-8">
             <Button
               size="lg"
-              className="bg-black hover:bg-gray-800 text-white flex items-center gap-2 py-6 px-8 rounded-none font-light"
+              className="bg-green-700 hover:bg-green-800 text-white flex items-center gap-2 py-6 px-8 rounded-none font-light"
             >
               📞 +91 9326990075
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="border-black text-black hover:bg-black hover:text-white py-6 px-8 rounded-none font-light"
+              className="border-green-700 text-green-700 hover:bg-green-700 hover:text-white py-6 px-8 rounded-none font-light"
             >
-              🔹 Get a Free Test Fitout in 24 Hours
+              Get a Free Test Fitout in 24 Hours
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="border-black text-black hover:bg-black hover:text-white py-6 px-8 rounded-none font-light"
+              className="border-green-700 text-green-700 hover:bg-green-700 hover:text-white py-6 px-8 rounded-none font-light"
             >
-              🔹 Enquire Now
+              Enquire Now
             </Button>
           </div>
         </motion.div>

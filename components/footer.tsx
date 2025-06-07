@@ -4,9 +4,40 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 export default function Footer() {
-  const cities = ["Mumbai", "Navi Mumbai", "Pune", "Chennai", "Hyderabad", "Delhi", "Bangalore"]
+  const router = useRouter()
+
+  const cities = [
+    { name: "Mumbai", path: "/mumbai" },
+    { name: "Navi Mumbai", path: "/navi-mumbai" },
+    { name: "Pune", path: "/pune" },
+    { name: "Chennai", path: "/chennai" },
+    { name: "Hyderabad", path: "/hyderabad" },
+    { name: "Delhi", path: "/delhi" },
+    { name: "Bangalore", path: "/bangalore" },
+  ]
+
+  const handleServiceClick = (section: string) => {
+    // Navigate to home page first if not already there
+    if (window.location.pathname !== "/") {
+      router.push("/")
+      // Need to wait for navigation to complete before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(section)
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" })
+        }
+      }, 500)
+    } else {
+      // Already on home page, just scroll
+      const element = document.getElementById(section)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+      }
+    }
+  }
 
   return (
     <footer className="bg-black text-white">
@@ -48,24 +79,36 @@ export default function Footer() {
             <h3 className="text-xl font-medium mb-4">Services</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                <button
+                  onClick={() => handleServiceClick("services")}
+                  className="text-gray-400 hover:text-white transition-colors text-left"
+                >
                   Test Fitout Layout
-                </Link>
+                </button>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                <button
+                  onClick={() => handleServiceClick("service-design")}
+                  className="text-gray-400 hover:text-white transition-colors text-left"
+                >
                   Office Design
-                </Link>
+                </button>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                <button
+                  onClick={() => handleServiceClick("service-build")}
+                  className="text-gray-400 hover:text-white transition-colors text-left"
+                >
                   Design & Build
-                </Link>
+                </button>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                <button
+                  onClick={() => handleServiceClick("contact")}
+                  className="text-gray-400 hover:text-white transition-colors text-left"
+                >
                   Office Renovation
-                </Link>
+                </button>
               </li>
             </ul>
           </motion.div>
@@ -89,9 +132,20 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#contact" className="text-gray-400 hover:text-white transition-colors">
+                <button
+                  onClick={() => handleServiceClick("contact")}
+                  className="text-gray-400 hover:text-white transition-colors text-left"
+                >
                   Contact Us
-                </Link>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleServiceClick("pricing")}
+                  className="text-gray-400 hover:text-white transition-colors text-left"
+                >
+                  Pricing
+                </button>
               </li>
             </ul>
           </motion.div>
@@ -102,15 +156,12 @@ export default function Footer() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="space-y-4"
           >
-            <h3 className="text-xl font-medium mb-4">Cities</h3>
+            <h3 className="text-xl font-medium mb-4">Office Interiors</h3>
             <ul className="space-y-2">
               {cities.map((city) => (
-                <li key={city}>
-                  <Link
-                    href={`/${city.toLowerCase().replace(" ", "-")}`}
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
-                  >
-                    {city}
+                <li key={city.name}>
+                  <Link href={city.path} className="text-gray-400 hover:text-white transition-colors text-sm">
+                    Office Interiors in {city.name}
                   </Link>
                 </li>
               ))}
@@ -123,14 +174,6 @@ export default function Footer() {
             <p className="text-gray-500 text-sm">
               © {new Date().getFullYear()} All Things Design. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="#" className="text-gray-500 hover:text-white transition-colors text-sm">
-                Privacy Policy
-              </Link>
-              <Link href="#" className="text-gray-500 hover:text-white transition-colors text-sm">
-                Terms of Service
-              </Link>
-            </div>
           </div>
         </div>
       </div>
