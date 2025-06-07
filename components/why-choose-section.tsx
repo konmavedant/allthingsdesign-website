@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Check, Zap, Users, HandHeart, TrendingDown, Clock } from "lucide-react"
+import { Check, Zap, Users, Heart, TrendingDown, Clock } from "lucide-react"
 
 interface WhyChooseSectionProps {
   city?: string
@@ -34,7 +34,7 @@ export default function WhyChooseSection({ city = "" }: WhyChooseSectionProps) {
         "Premium materials chosen for aesthetics, durability, and sustainability to create spaces that last.",
     },
     {
-      icon: HandHeart,
+      icon: Heart,
       title: "Single Point of Contact",
       description:
         "Your dedicated project manager ensures clear communication and smooth coordination throughout the process.",
