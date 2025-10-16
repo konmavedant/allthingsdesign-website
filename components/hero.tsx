@@ -103,7 +103,7 @@ export default function Hero() {
         <motion.span
           key={index}
           variants={letterVariants}
-          className={`inline-block mr-2 ${isHighlighted ? "text-green-400" : ""}`}
+          className={`inline-block mr-2 ${isHighlighted ? "font-bold relative highlight-text" : ""}`}
         >
           {word}
         </motion.span>
@@ -164,7 +164,7 @@ export default function Hero() {
                 {slides[currentSlide].subtitle.split(" ").map((word, index) => {
                   const isHighlighted = slides[currentSlide].highlightWords.subtitle.includes(word)
                   return (
-                    <span key={index} className={`mr-2 ${isHighlighted ? "text-green-400" : ""}`}>
+                    <span key={index} className={`mr-2 ${isHighlighted ? "font-bold relative highlight-text" : ""}`}>
                       {word}
                     </span>
                   )
@@ -248,6 +248,27 @@ export default function Hero() {
           }
           50% {
             transform: scale(1.05);
+          }
+        }
+        .highlight-text::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -2px;
+          height: 3px;
+          background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
+          border-radius: 2px;
+          animation: highlightPulse 2s ease-in-out infinite;
+        }
+        @keyframes highlightPulse {
+          0%, 100% {
+            opacity: 0.7;
+            transform: scaleX(0.95);
+          }
+          50% {
+            opacity: 1;
+            transform: scaleX(1);
           }
         }
       `}</style>

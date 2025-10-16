@@ -33,7 +33,7 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.2, duration: 0.5 }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur-md shadow-sm text-black" : "bg-white text-black"
+        isScrolled ? "bg-transparent/20 backdrop-blur-md shadow-sm text-white" : "bg-transparent/20 backdrop-blur-sm text-white"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
@@ -45,19 +45,19 @@ export default function Navbar() {
         <div className="hidden md:flex items-center space-x-12">
           <Link
             href="/about"
-            className={`hover:text-green-600 transition-colors text-lg font-light ${pathname === "/about" ? "text-green-600" : ""}`}
+            className={`hover:text-green-400 transition-colors text-lg font-light ${pathname === "/about" ? "text-green-400" : ""}`}
           >
             About
           </Link>
           <Link
             href="/gallery"
-            className={`hover:text-green-600 transition-colors text-lg font-light ${pathname === "/gallery" ? "text-green-600" : ""}`}
+            className={`hover:text-green-400 transition-colors text-lg font-light ${pathname === "/gallery" ? "text-green-400" : ""}`}
           >
             Gallery
           </Link>
           <Link
             href="/#pricing"
-            className="hover:text-green-600 transition-colors text-lg font-light"
+            className="hover:text-green-400 transition-colors text-lg font-light"
             onClick={(e) => {
               if (pathname === "/") {
                 e.preventDefault()
@@ -69,7 +69,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="/#contact"
-            className="hover:text-green-600 transition-colors text-lg font-light"
+            className="hover:text-green-400 transition-colors text-lg font-light"
             onClick={(e) => {
               if (pathname === "/") {
                 e.preventDefault()
@@ -106,26 +106,26 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white shadow-lg"
+            className="md:hidden bg-black/80 backdrop-blur-md shadow-lg"
           >
             <div className="flex flex-col space-y-4 p-4">
               <Link
                 href="/about"
-                className="py-2 hover:text-green-600 transition-colors text-lg font-light"
+                className="py-2 hover:text-green-400 transition-colors text-lg font-light"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About
               </Link>
               <Link
                 href="/gallery"
-                className="py-2 hover:text-green-600 transition-colors text-lg font-light"
+                className="py-2 hover:text-green-400 transition-colors text-lg font-light"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Gallery
               </Link>
               <Link
                 href="/#pricing"
-                className="py-2 hover:text-green-600 transition-colors text-lg font-light"
+                className="py-2 hover:text-green-400 transition-colors text-lg font-light"
                 onClick={() => {
                   setMobileMenuOpen(false)
                   if (pathname === "/") {
@@ -137,7 +137,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="#contact"
-                className="py-2 hover:text-green-600 transition-colors text-lg font-light"
+                className="py-2 hover:text-green-400 transition-colors text-lg font-light"
                 onClick={() => {
                   setMobileMenuOpen(false)
                   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })

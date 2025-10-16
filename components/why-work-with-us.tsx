@@ -1,50 +1,64 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import { useInView } from "framer-motion"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 export default function WhyWorkWithUs() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: false, amount: 0.1 })
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   const reasons = [
     {
       id: 1,
       icon: "💡",
       title: "Clarity Before You Commit",
-      description:
-        "We take the guesswork out of office planning. Our test fit-out layouts give you a clear vision of your workspace before any major decisions. Whether it's optimizing for seating, workflow efficiency, or branding, we help you visualize and validate your office layout—fast and free—so you make informed choices with confidence.",
+      description: "Test fit-out layouts give you a clear vision before decisions. Fast and free validation.",
     },
     {
       id: 2,
       icon: "⚡",
       title: "Fast-Paced & Deadline-Driven",
-      description:
-        "Speed is our strength. We understand that office spaces are crucial for business operations, so we work on an accelerated timeline without compromising quality. With designs in just 3 weeks and design-build execution in 60-75 days, we ensure your office is ready on time, every time.",
+      description: "Designs in 3 weeks, execution in 60-75 days. Quality without compromise.",
     },
     {
       id: 3,
       icon: "👥",
       title: "Lean Team, Maximum Efficiency",
-      description:
-        "We believe in agility over bulk—our lean, expert-driven team ensures efficient execution without unnecessary overhead. This means faster communication, quicker decision-making, and a streamlined process to get your office up and running without delays. Personal involvement at every stage.",
+      description: "Expert-driven team ensures faster communication and streamlined process.",
     },
     {
       id: 4,
       icon: "🤝",
-      title: "One Point of Contact for Seamless Coordination",
-      description:
-        "No running around, no miscommunication. We provide a dedicated single point of contact (POC) for your project, ensuring seamless coordination between designers, contractors, and vendors. With one POC, you get clear updates, smooth problem-solving, and a hassle-free experience from start to finish.",
+      title: "One Point of Contact",
+      description: "Dedicated POC for seamless coordination. Clear updates, hassle-free experience.",
     },
     {
       id: 5,
       icon: "📉",
-      title: "Cost-Effective & Transparent Pricing",
-      description:
-        "No surprises, no inflated costs. We prioritize value-driven design, using strategic material selection and smart space planning to deliver premium quality within budget. Our transparent pricing ensures you get exactly what you pay for, with no hidden charges.",
+      title: "Cost-Effective & Transparent",
+      description: "Value-driven design with transparent pricing. No surprises, no hidden charges.",
     },
   ]
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % reasons.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + reasons.length) % reasons.length)
+  }
+
+  // Auto-rotation effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % reasons.length)
+    }, 2000) // 2 seconds
+
+    return () => clearInterval(interval)
+  }, [reasons.length])
 
   return (
     <section className="py-20 bg-white" ref={ref}>
@@ -58,22 +72,62 @@ export default function WhyWorkWithUs() {
           Why Work With Us?
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reasons.map((reason, index) => (
+        {/* Carousel Container */}
+        <div className="relative max-w-4xl mx-auto">
+          {/* Carousel Slides */}
+          <div className="overflow-hidden">
             <motion.div
-              key={reason.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="p-8 bg-white border border-gray-100 hover:shadow-lg transition-all duration-300 group"
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">{reason.icon}</div>
-              <h3 className="text-xl font-medium mb-4 text-black group-hover:text-gray-600 transition-colors">
-                {reason.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">{reason.description}</p>
+              {reasons.map((reason, index) => (
+                <div
+                  key={reason.id}
+                  className="w-full flex-shrink-0 px-4"
+                >
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.8 }}
+                    className="p-8 bg-white border border-gray-100 hover:shadow-lg transition-all duration-300 group text-center"
+                  >
+                    <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">{reason.icon}</div>
+                    <h3 className="text-2xl font-medium mb-4 text-black group-hover:text-gray-600 transition-colors">
+                      {reason.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed text-lg">{reason.description}</p>
+                  </motion.div>
+                </div>
+              ))}
             </motion.div>
-          ))}
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white border border-gray-200 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-50"
+          >
+            <ChevronLeft size={24} className="text-gray-600" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white border border-gray-200 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-50"
+          >
+            <ChevronRight size={24} className="text-gray-600" />
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center mt-8 space-x-2">
+            {reasons.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentSlide ? 'bg-gray-800' : 'bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         <motion.div
@@ -82,8 +136,8 @@ export default function WhyWorkWithUs() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center mt-16"
         >
-          <p className="text-2xl font-light text-black">
-            🚀 Let's Build Your Dream Office—Fast, Efficient, and Hassle-Free!
+          <p className="text-xl font-light text-black">
+            Let's Build Your Dream Office—Fast, Efficient, and Hassle-Free!
           </p>
         </motion.div>
       </div>

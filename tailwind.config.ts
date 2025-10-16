@@ -21,8 +21,8 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        bree: ["var(--font-bree-serif)", "serif"],
-        sans: ["var(--font-bree-serif)", "serif"],
+        gilroy: ["var(--font-gilroy)", "sans-serif"],
+        sans: ["var(--font-gilroy)", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

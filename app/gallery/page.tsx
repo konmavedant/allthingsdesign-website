@@ -7,162 +7,108 @@ export default function Gallery() {
   const projects = [
     {
       id: 1,
-      name: "Modern Corporate Office",
-      year: "2024",
-      location: "Mumbai",
-      area: "5000 sq ft",
+      name: "Mindtickle",
+      description: "Designing for Diversity and Experience, Designing for Efficiency and Adaptability",
       image: "/images/office-interior-1.png",
-      size: "large",
     },
     {
       id: 2,
-      name: "Tech Startup Hub",
-      year: "2024",
-      location: "Bangalore",
-      area: "3500 sq ft",
+      name: "Coreco Technologies",
+      description: "Designing for Diversity and Experience",
       image: "/images/office-interior-2.png",
-      size: "medium",
     },
     {
       id: 3,
-      name: "Executive Suites",
-      year: "2023",
-      location: "Delhi",
-      area: "4200 sq ft",
+      name: "Biophilic Design Studio",
+      description: "Connecting Nature with Modern Workspaces",
       image: "/images/office-interior-3.png",
-      size: "small",
     },
     {
       id: 4,
-      name: "Creative Agency Space",
-      year: "2023",
-      location: "Pune",
-      area: "2800 sq ft",
+      name: "Executive Innovation Hub",
+      description: "Sophisticated Spaces for Leadership and Growth",
       image: "/images/office-interior-4.png",
-      size: "medium",
     },
     {
       id: 5,
-      name: "Financial Services Office",
-      year: "2024",
-      location: "Chennai",
-      area: "6000 sq ft",
+      name: "Tech Startup Hub",
+      description: "Modern workspaces for innovation and collaboration",
       image: "/images/office-interior-5.png",
-      size: "large",
     },
     {
       id: 6,
       name: "Co-working Space",
-      year: "2023",
-      location: "Hyderabad",
-      area: "4500 sq ft",
+      description: "Flexible environments for dynamic teams",
       image: "/images/office-interior-6.png",
-      size: "small",
     },
     {
       id: 7,
       name: "Law Firm Office",
-      year: "2024",
-      location: "Mumbai",
-      area: "3200 sq ft",
+      description: "Professional spaces for legal excellence",
       image: "/images/office-interior-7.png",
-      size: "medium",
     },
     {
       id: 8,
       name: "Healthcare Office",
-      year: "2023",
-      location: "Bangalore",
-      area: "2500 sq ft",
+      description: "Healing environments for wellness professionals",
       image: "/images/office-interior-8.png",
-      size: "small",
     },
     {
       id: 9,
-      name: "Consulting Firm",
-      year: "2024",
-      location: "Delhi",
-      area: "3800 sq ft",
-      image: "/images/office-interior-1.png",
-      size: "small",
+      name: "Creative Agency Space",
+      description: "Inspiring environments for creative minds",
+      image: "/images/hero-slide-1.jpeg",
     },
     {
       id: 10,
-      name: "Media Production House",
-      year: "2023",
-      location: "Mumbai",
-      area: "4200 sq ft",
-      image: "/images/office-interior-2.png",
-      size: "medium",
+      name: "Financial Services Office",
+      description: "Trust-building spaces for financial professionals",
+      image: "/images/hero-slide-2.jpeg",
     },
     {
       id: 11,
       name: "E-commerce Headquarters",
-      year: "2024",
-      location: "Bangalore",
-      area: "7500 sq ft",
-      image: "/images/office-interior-3.png",
-      size: "large",
+      description: "Scalable spaces for growing businesses",
+      image: "/images/hero-slide-3.jpeg",
     },
     {
       id: 12,
-      name: "Design Studio",
-      year: "2023",
-      location: "Pune",
-      area: "2200 sq ft",
-      image: "/images/office-interior-4.png",
-      size: "small",
+      name: "Investment Banking Office",
+      description: "Sophisticated spaces for high-stakes decisions",
+      image: "/images/office-interior-1.png",
     },
     {
       id: 13,
-      name: "Investment Banking Office",
-      year: "2024",
-      location: "Mumbai",
-      area: "5500 sq ft",
-      image: "/images/office-interior-5.png",
-      size: "medium",
+      name: "Software Development Center",
+      description: "Productivity-focused environments for developers",
+      image: "/images/office-interior-2.png",
     },
     {
       id: 14,
-      name: "Software Development Center",
-      year: "2023",
-      location: "Chennai",
-      area: "6200 sq ft",
-      image: "/images/office-interior-6.png",
-      size: "large",
+      name: "Marketing Agency",
+      description: "Dynamic spaces for brand storytelling",
+      image: "/images/office-interior-3.png",
     },
     {
       id: 15,
-      name: "Marketing Agency",
-      year: "2024",
-      location: "Hyderabad",
-      area: "3000 sq ft",
-      image: "/images/office-interior-7.png",
-      size: "small",
+      name: "Pharmaceutical Office",
+      description: "Research-driven spaces for medical innovation",
+      image: "/images/office-interior-4.png",
     },
     {
       id: 16,
-      name: "Pharmaceutical Office",
-      year: "2023",
-      location: "Delhi",
-      area: "4800 sq ft",
-      image: "/images/office-interior-8.png",
-      size: "medium",
+      name: "Innovation Lab",
+      description: "Experimental spaces for breakthrough ideas",
+      image: "/images/office-interior-5.png",
+    },
+    {
+      id: 17,
+      name: "Corporate Headquarters",
+      description: "Command centers for enterprise leadership",
+      image: "/images/office-interior-6.png",
     },
   ]
 
-  const getSizeClasses = (size: string) => {
-    switch (size) {
-      case "large":
-        return "md:col-span-2 md:row-span-2 h-96 md:h-full"
-      case "medium":
-        return "md:col-span-2 h-64"
-      case "small":
-        return "h-64"
-      default:
-        return "h-64"
-    }
-  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -202,20 +148,18 @@ export default function Gallery() {
           </p>
         </motion.div>
 
-        {/* Interactive Masonry Grid */}
+        {/* 2x2 Grid Layout */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-max"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
         >
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
               variants={itemVariants}
-              className={`group cursor-pointer overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-700 ${getSizeClasses(
-                project.size,
-              )}`}
+              className="group cursor-pointer overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-700 h-96 md:h-[500px]"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -227,15 +171,9 @@ export default function Gallery() {
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="text-xl font-medium mb-2">{project.name}</h3>
-                  <div className="flex flex-wrap gap-2 text-sm opacity-90">
-                    <span>{project.year}</span>
-                    <span>•</span>
-                    <span>{project.location}</span>
-                    <span>•</span>
-                    <span>{project.area}</span>
-                  </div>
+                <div className="absolute bottom-0 left-0 right-0 p-8 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                  <h3 className="text-2xl font-light mb-3">{project.name}</h3>
+                  <p className="text-sm opacity-90 leading-relaxed">{project.description}</p>
                 </div>
               </div>
             </motion.div>
@@ -257,7 +195,7 @@ export default function Gallery() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-green-700 hover:bg-green-800 text-white px-12 py-4 rounded-none font-light text-lg transition-all duration-300"
+            className="bg-gray-800 hover:bg-gray-900 text-white px-12 py-4 rounded-none font-light text-lg transition-all duration-300"
             onClick={() => (window.location.href = "/#contact")}
           >
             Start Your Project

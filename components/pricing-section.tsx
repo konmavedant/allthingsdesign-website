@@ -14,9 +14,9 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
       name: "Essential",
       description: "Smart design. Efficient execution.",
       range: "1700 – 2000 Sq ft",
-      gradient: "from-emerald-400 via-green-500 to-green-600",
-      bgGradient: "from-emerald-50 to-green-50",
-      borderColor: "border-green-200",
+      gradient: "from-gray-400 via-gray-500 to-gray-600",
+      bgGradient: "from-gray-50 to-gray-50",
+      borderColor: "border-gray-200",
       features: [
         "Space planning & layout design",
         "Basic furniture & fixtures",
@@ -26,16 +26,16 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
         "Project management support",
       ],
       icon: Zap,
-      iconColor: "text-green-600",
-      buttonColor: "bg-green-600 hover:bg-green-700",
+      iconColor: "text-gray-600",
+      buttonColor: "bg-gray-800 hover:bg-gray-900",
     },
     {
       name: "Premium",
       description: "Balanced aesthetics and performance.",
       range: "2000 – 2500 Sq ft",
-      gradient: "from-blue-400 via-blue-500 to-blue-600",
-      bgGradient: "from-blue-50 to-indigo-50",
-      borderColor: "border-blue-200",
+      gradient: "from-gray-400 via-gray-500 to-gray-600",
+      bgGradient: "from-gray-50 to-gray-50",
+      borderColor: "border-gray-200",
       features: [
         "Everything in Essential, plus:",
         "Custom furniture solutions",
@@ -46,17 +46,17 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
         "Dedicated project coordinator",
       ],
       icon: Star,
-      iconColor: "text-blue-600",
-      buttonColor: "bg-blue-600 hover:bg-blue-700",
+      iconColor: "text-gray-600",
+      buttonColor: "bg-gray-800 hover:bg-gray-900",
       featured: true,
     },
     {
       name: "Luxury",
       description: "High-end interiors that make a statement.",
       range: "2500+ sq ft",
-      gradient: "from-purple-400 via-purple-500 to-purple-600",
-      bgGradient: "from-purple-50 to-pink-50",
-      borderColor: "border-purple-200",
+      gradient: "from-gray-400 via-gray-500 to-gray-600",
+      bgGradient: "from-gray-50 to-gray-50",
+      borderColor: "border-gray-200",
       features: [
         "Everything in Premium, plus:",
         "Bespoke furniture & fixtures",
@@ -68,8 +68,8 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
         "White-glove service",
       ],
       icon: Crown,
-      iconColor: "text-purple-600",
-      buttonColor: "bg-purple-600 hover:bg-purple-700",
+      iconColor: "text-gray-600",
+      buttonColor: "bg-gray-800 hover:bg-gray-900",
     },
   ]
 
@@ -112,7 +112,7 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="inline-block mb-4"
           >
-            <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium">
+            <span className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
               Flexible Pricing Plans
             </span>
           </motion.div>
@@ -146,8 +146,8 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
                   transition={{ delay: 0.5 }}
                   className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10"
                 >
-                  <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-2 rounded-full text-sm font-medium shadow-lg">
-                    ⭐ Most Popular
+                  <div className="bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium shadow-lg">
+                    Most Popular
                   </div>
                 </motion.div>
               )}
@@ -185,8 +185,8 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
                         transition={{ delay: i * 0.1 }}
                         className="flex items-start group/item"
                       >
-                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-3 group-hover/item:bg-green-200 transition-colors">
-                          <Check size={14} className="text-green-600" />
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center mr-3 group-hover/item:bg-gray-200 transition-colors">
+                          <Check size={14} className="text-gray-600" />
                         </div>
                         <span className="text-gray-700 leading-relaxed group-hover/item:text-gray-900 transition-colors">
                           {feature}

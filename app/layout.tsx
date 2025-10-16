@@ -1,14 +1,24 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Bree_Serif } from "next/font/google"
+import localFont from "next/font/local"
 import "./globals.css"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 
-const breeSerif = Bree_Serif({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-bree-serif",
+const gilroy = localFont({
+  src: [
+    {
+      path: "../public/fonts/Gilroy-Light.otf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Gilroy-ExtraBold.otf",
+      weight: "800",
+      style: "normal",
+    },
+  ],
+  variable: "--font-gilroy",
   display: "swap",
 })
 
@@ -25,8 +35,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`scroll-smooth ${breeSerif.variable}`}>
-      <body className={breeSerif.className}>
+    <html lang="en" className={`scroll-smooth ${gilroy.variable}`}>
+      <body className={gilroy.className}>
         <Navbar />
         {children}
         <Footer />
