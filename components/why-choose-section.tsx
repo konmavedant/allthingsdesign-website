@@ -122,7 +122,7 @@ export default function WhyChooseSection({ city = "" }: WhyChooseSectionProps) {
             Whether you're setting up a new office or renovating your current space, our experienced team ensures a
             smooth, hassle-free journey from concept to completion.
             {city && (
-              <span className="block mt-4 font-medium">📍 Serving Startups, SMEs, and Corporates across {city}.</span>
+              <span className="block mt-4 font-medium">Serving Startups, SMEs, and Corporates across {city}.</span>
             )}
           </p>
         </motion.div>

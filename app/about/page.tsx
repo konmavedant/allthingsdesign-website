@@ -7,17 +7,17 @@ export default function About() {
   const teamMembers = [
     {
       id: 1,
-      name: "Rajesh Kumar",
+      name: "Urvi Kataria",
       position: "Founder & Principal Designer",
       image: "/images/office-interior-1.png",
-      bio: "With over 15 years of experience in interior design, Rajesh leads our creative vision and ensures every project reflects our commitment to excellence.",
+      bio: "With over 15 years of experience in interior design, Urvi leads our creative vision and ensures every project reflects our commitment to excellence.",
     },
     {
       id: 2,
-      name: "Priya Sharma",
-      position: "Senior Interior Designer",
-      image: "/images/office-interior-2.png",
-      bio: "Priya specializes in modern office layouts and sustainable design practices, bringing innovation to every workspace we create.",
+      name: "Anuja Kadam",
+      position: "Growth Manager",
+      image: "/images/anuja.jpeg",
+      bio: "Anuja specializes in modern office layouts and sustainable design practices, bringing innovation to every workspace we create.",
     },
     {
       id: 3,
@@ -111,7 +111,7 @@ export default function About() {
             </motion.div>
 
             <motion.div variants={itemVariants} className="relative h-96 overflow-hidden rounded-lg">
-              <Image src="/images/office-interior-5.png" alt="Our design process" fill className="object-cover" />
+              <Image src="/images/gallery-8.jpg" alt="Our design process" fill className="object-cover" />
             </motion.div>
           </motion.div>
         </div>
@@ -227,8 +227,7 @@ export default function About() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-black hover:bg-gray-800 text-white px-12 py-4 rounded-none font-light text-lg transition-all duration-300"
-              onClick={() => (window.location.href = "/#contact")}
+              className="bg-green-700 hover:bg-green-800 text-white px-12 py-4 rounded-none font-light text-lg transition-all duration-300"              onClick={() => (window.location.href = "/#contact")}
             >
               Get Started Today
             </motion.button>

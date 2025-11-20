@@ -103,7 +103,7 @@ export default function Hero() {
         <motion.span
           key={index}
           variants={letterVariants}
-          className={`inline-block mr-2 ${isHighlighted ? "font-bold relative highlight-text" : ""}`}
+          className={`inline-block mr-2 ${isHighlighted ? "font-medium relative highlight-text" : ""}`}
         >
           {word}
         </motion.span>
@@ -112,7 +112,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
+    <section id="hero-section" className="relative min-h-screen flex items-center overflow-hidden bg-white">
       {/* Background Images - All slides rendered with opacity control */}
       {slides.map((slide, index) => (
         <div
@@ -151,11 +151,11 @@ export default function Hero() {
                 variants={staggerContainer}
                 initial="hidden"
                 animate="visible"
-                className="text-3xl md:text-5xl lg:text-6xl font-semibold mb-2 text-white leading-tight tracking-wider"
+                className="text-3xl md:text-5xl lg:text-6xl font-medium mb-2 text-white leading-tight tracking-wider"
               >
                 {renderTextWithHighlight(slides[currentSlide].title, slides[currentSlide].highlightWords.title)}
               </motion.h1>
-              <motion.h2
+              {/* <motion.h2
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.25, duration: 0.5 }}
@@ -164,12 +164,12 @@ export default function Hero() {
                 {slides[currentSlide].subtitle.split(" ").map((word, index) => {
                   const isHighlighted = slides[currentSlide].highlightWords.subtitle.includes(word)
                   return (
-                    <span key={index} className={`mr-2 ${isHighlighted ? "font-bold relative highlight-text" : ""}`}>
+                    <span key={index} className={`mr-2 ${isHighlighted ? "font-medium relative highlight-text" : ""}`}>
                       {word}
                     </span>
                   )
                 })}
-              </motion.h2>
+              </motion.h2> */}
             </motion.div>
           </AnimatePresence>
 
@@ -203,20 +203,6 @@ export default function Hero() {
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                 >
                   Enquire Now
-                </Button>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.03, y: -1 }}
-                whileTap={{ scale: 0.99 }}
-                transition={{ type: "spring", stiffness: 500, damping: 20 }}
-              >
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-green-700 text-green-700 hover:bg-green-700 hover:text-white text-sm px-8 py-4 rounded-none font-light transition-all duration-300 shadow-md hover:shadow-lg"
-                  onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-                >
-                  View Projects
                 </Button>
               </motion.div>
             </motion.div>

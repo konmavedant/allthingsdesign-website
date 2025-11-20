@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 import { useInView } from "framer-motion"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 
 export default function WhyWorkWithUs() {
   const ref = useRef(null)
@@ -43,14 +42,6 @@ export default function WhyWorkWithUs() {
     },
   ]
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % reasons.length)
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + reasons.length) % reasons.length)
-  }
-
   // Auto-rotation effect
   useEffect(() => {
     const interval = setInterval(() => {
@@ -89,7 +80,7 @@ export default function WhyWorkWithUs() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                     transition={{ duration: 0.8 }}
-                    className="p-8 bg-white border border-gray-100 hover:shadow-lg transition-all duration-300 group text-center"
+                    className="p-8 bg-white hover:shadow-lg transition-all duration-300 group text-center"
                   >
                     <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">{reason.icon}</div>
                     <h3 className="text-2xl font-medium mb-4 text-black group-hover:text-gray-600 transition-colors">
@@ -101,20 +92,6 @@ export default function WhyWorkWithUs() {
               ))}
             </motion.div>
           </div>
-
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white border border-gray-200 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-50"
-          >
-            <ChevronLeft size={24} className="text-gray-600" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white border border-gray-200 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-50"
-          >
-            <ChevronRight size={24} className="text-gray-600" />
-          </button>
 
           {/* Dots Indicator */}
           <div className="flex justify-center mt-8 space-x-2">

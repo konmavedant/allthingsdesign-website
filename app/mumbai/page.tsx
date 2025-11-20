@@ -13,7 +13,7 @@ export default function Mumbai() {
       name: "House of Sparsh",
       description:
         "A modern office space designed for a growing tech company in Mumbai, featuring collaborative areas, focus zones, and a vibrant cafeteria.",
-      image: "/images/office-interior-2.png",
+      image: "/images/HOS-1.jpg",
     },
     {
       id: 2,

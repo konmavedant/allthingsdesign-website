@@ -13,14 +13,14 @@ export default function Delhi() {
       name: "Corporate Center",
       description:
         "A prestigious office space designed for a multinational corporation in Delhi, featuring elegant design and premium materials.",
-      image: "/images/office-interior-5.png",
+      image: "/images/dentos.jpg",
     },
     {
       id: 2,
       name: "Media Agency Office",
       description:
         "A creative and dynamic workspace designed for a media agency in Delhi, balancing functionality with inspiring design elements.",
-      image: "/images/office-interior-1.png",
+      image: "/images/dentos.jpg",
     },
   ]
 

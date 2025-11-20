@@ -9,103 +9,97 @@ export default function Gallery() {
       id: 1,
       name: "Mindtickle",
       description: "Designing for Diversity and Experience, Designing for Efficiency and Adaptability",
-      image: "/images/office-interior-1.png",
+      image: "/images/cogo.jpg",
     },
     {
       id: 2,
       name: "Coreco Technologies",
       description: "Designing for Diversity and Experience",
-      image: "/images/office-interior-2.png",
+      image: "/images/elleys.jpg",
     },
     {
       id: 3,
       name: "Biophilic Design Studio",
       description: "Connecting Nature with Modern Workspaces",
-      image: "/images/office-interior-3.png",
+      image: "/images/HOS-1.jpg",
     },
     {
       id: 4,
       name: "Executive Innovation Hub",
       description: "Sophisticated Spaces for Leadership and Growth",
-      image: "/images/office-interior-4.png",
+      image: "/images/HOS-2.jpg",
     },
     {
       id: 5,
       name: "Tech Startup Hub",
       description: "Modern workspaces for innovation and collaboration",
-      image: "/images/office-interior-5.png",
+      image: "/images/THUB-1.jpg",
     },
     {
       id: 6,
       name: "Co-working Space",
       description: "Flexible environments for dynamic teams",
-      image: "/images/office-interior-6.png",
+      image: "/images/THUB-2.jpg",
     },
     {
       id: 7,
       name: "Law Firm Office",
       description: "Professional spaces for legal excellence",
-      image: "/images/office-interior-7.png",
+      image: "/images/dentos.jpg",
     },
     {
       id: 8,
       name: "Healthcare Office",
       description: "Healing environments for wellness professionals",
-      image: "/images/office-interior-8.png",
+      image: "/images/OMR-1.jpeg",
     },
     {
       id: 9,
       name: "Creative Agency Space",
       description: "Inspiring environments for creative minds",
-      image: "/images/hero-slide-1.jpeg",
+      image: "/images/gallery-9.jpg",
     },
     {
       id: 10,
       name: "Financial Services Office",
       description: "Trust-building spaces for financial professionals",
-      image: "/images/hero-slide-2.jpeg",
+      image: "/images/gallery-1.jpg",
     },
     {
       id: 11,
       name: "E-commerce Headquarters",
       description: "Scalable spaces for growing businesses",
-      image: "/images/hero-slide-3.jpeg",
+      image: "/images/gallery-2.jpeg",    
     },
     {
       id: 12,
       name: "Investment Banking Office",
       description: "Sophisticated spaces for high-stakes decisions",
-      image: "/images/office-interior-1.png",
+      image: "/images/gallery-3.jpeg",
     },
     {
       id: 13,
       name: "Software Development Center",
       description: "Productivity-focused environments for developers",
-      image: "/images/office-interior-2.png",
+      image: "/images/gallery-4.jpeg",
     },
     {
       id: 14,
       name: "Marketing Agency",
       description: "Dynamic spaces for brand storytelling",
-      image: "/images/office-interior-3.png",
+      image: "/images/gallery-5.jpg",
     },
     {
       id: 15,
       name: "Pharmaceutical Office",
       description: "Research-driven spaces for medical innovation",
-      image: "/images/office-interior-4.png",
+      image: "/images/gallery-6.jpg",   
     },
     {
       id: 16,
       name: "Innovation Lab",
       description: "Experimental spaces for breakthrough ideas",
-      image: "/images/office-interior-5.png",
-    },
-    {
-      id: 17,
-      name: "Corporate Headquarters",
-      description: "Command centers for enterprise leadership",
-      image: "/images/office-interior-6.png",
+      image: "/images/gallery-7.jpg",
     },
   ]
 
@@ -195,7 +189,7 @@ export default function Gallery() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gray-800 hover:bg-gray-900 text-white px-12 py-4 rounded-none font-light text-lg transition-all duration-300"
+            className="bg-green-700 hover:bg-green-800 text-white px-12 py-4 rounded-none font-light text-lg transition-all duration-300"       
             onClick={() => (window.location.href = "/#contact")}
           >
             Start Your Project

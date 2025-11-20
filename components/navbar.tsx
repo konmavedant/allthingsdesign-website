@@ -12,6 +12,7 @@ import { usePathname } from "next/navigation"
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isHeroCovered, setIsHeroCovered] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -27,37 +28,68 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (typeof window === "undefined") return
+
+    const heroSection = document.getElementById("hero-section")
+
+    if (!heroSection) {
+      setIsHeroCovered(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsHeroCovered(!entry.isIntersecting)
+      },
+      { threshold: 0.05 }
+    )
+
+    observer.observe(heroSection)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [pathname])
+
+  const shouldShowNav = pathname !== "/" || isHeroCovered
+  const visibilityClasses = shouldShowNav ? "translate-y-0 opacity-100 pointer-events-auto" : "-translate-y-full opacity-0 pointer-events-none"
+
   return (
     <motion.nav
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: 0.2, duration: 0.5 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-transparent/20 backdrop-blur-md shadow-sm text-white" : "bg-transparent/20 backdrop-blur-sm text-white"
-      }`}
+      initial={false}
+      animate={{ y: shouldShowNav ? 0 : -20, opacity: shouldShowNav ? 1 : 0 }}
+      transition={{ duration: 0.3 }}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${visibilityClasses} ${
+        shouldShowNav ? "bg-white/60 backdrop-blur-md text-black" : "text-white"
+      } ${shouldShowNav && isScrolled ? "shadow-lg" : ""}`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
         <Link href="/" className="flex items-center">
-          <Image src="/images/logo.png" alt="All Things Design" width={120} height={60} className="h-12 w-auto" />
+          <Image src="/images/ALT-LOGO.png" alt="All Things Design" width={120} height={70} className="h-12 w-auto" />
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-12">
           <Link
             href="/about"
-            className={`hover:text-green-400 transition-colors text-lg font-light ${pathname === "/about" ? "text-green-400" : ""}`}
+            className={`text-lg font-medium transition-colors ${
+              pathname === "/about" ? "text-green-700" : "text-black"
+            } hover:text-green-700`}
           >
             About
           </Link>
           <Link
             href="/gallery"
-            className={`hover:text-green-400 transition-colors text-lg font-light ${pathname === "/gallery" ? "text-green-400" : ""}`}
+            className={`text-lg font-medium transition-colors ${
+              pathname === "/gallery" ? "text-green-700" : "text-black"
+            } hover:text-green-700`}
           >
             Gallery
           </Link>
           <Link
             href="/#pricing"
-            className="hover:text-green-400 transition-colors text-lg font-light"
+            className="text-lg font-medium transition-colors text-black hover:text-green-700"
             onClick={(e) => {
               if (pathname === "/") {
                 e.preventDefault()
@@ -69,7 +101,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="/#contact"
-            className="hover:text-green-400 transition-colors text-lg font-light"
+            className="text-lg font-medium transition-colors text-black hover:text-green-700"
             onClick={(e) => {
               if (pathname === "/") {
                 e.preventDefault()
@@ -93,7 +125,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden text-2xl p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+        <button className="md:hidden text-2xl p-2 text-black" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
           {mobileMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
@@ -106,26 +138,26 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-black/80 backdrop-blur-md shadow-lg"
+            className="md:hidden bg-white text-black shadow-lg border-t border-black/5"
           >
             <div className="flex flex-col space-y-4 p-4">
               <Link
                 href="/about"
-                className="py-2 hover:text-green-400 transition-colors text-lg font-light"
+                className="py-2 transition-colors text-lg font-medium hover:text-green-700"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About
               </Link>
               <Link
                 href="/gallery"
-                className="py-2 hover:text-green-400 transition-colors text-lg font-light"
+                className="py-2 transition-colors text-lg font-medium hover:text-green-700"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Gallery
               </Link>
               <Link
                 href="/#pricing"
-                className="py-2 hover:text-green-400 transition-colors text-lg font-light"
+                className="py-2 transition-colors text-lg font-medium hover:text-green-700"
                 onClick={() => {
                   setMobileMenuOpen(false)
                   if (pathname === "/") {
@@ -136,8 +168,8 @@ export default function Navbar() {
                 Pricing
               </Link>
               <Link
-                href="#contact"
-                className="py-2 hover:text-green-400 transition-colors text-lg font-light"
+                href="/#contact"
+                className="py-2 transition-colors text-lg font-medium hover:text-green-700"
                 onClick={() => {
                   setMobileMenuOpen(false)
                   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })

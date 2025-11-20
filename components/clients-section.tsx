@@ -20,12 +20,12 @@ export default function ClientsSection() {
   }, [isInView])
 
   const clients = [
-    { id: 1, logo: "/images/office-interior-1.png", alt: "Client 1" },
-    { id: 2, logo: "/images/office-interior-2.png", alt: "Client 2" },
-    { id: 3, logo: "/images/office-interior-3.png", alt: "Client 3" },
-    { id: 4, logo: "/images/office-interior-4.png", alt: "Client 4" },
-    { id: 5, logo: "/images/office-interior-5.png", alt: "Client 5" },
-    { id: 6, logo: "/images/office-interior-6.png", alt: "Client 6" },
+    { id: 1, logo: "/images/akash-byjus.png", alt: "Client 1" },
+    { id: 2, logo: "/images/cityflo-logo-black.png", alt: "Client 2" },
+    { id: 3, logo: "/images/cogoport.png", alt: "Client 3" },
+    { id: 4, logo: "/images/elleys-logo.png", alt: "Client 4" },
+    { id: 5, logo: "/images/dentons-logo.png", alt: "Client 5" },
+    { id: 6, logo: "/images/infra-market.png", alt: "Client 6" },
   ]
 
   const stats = [
@@ -73,7 +73,7 @@ export default function ClientsSection() {
                     src={client.logo || "/placeholder.svg"}
                     alt={client.alt}
                     fill
-                    className="object-cover grayscale hover:grayscale-0 transition-all duration-300"
+                    className="object-cover green hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
               </div>
@@ -85,7 +85,7 @@ export default function ClientsSection() {
                     src={client.logo || "/placeholder.svg"}
                     alt={client.alt}
                     fill
-                    className="object-cover grayscale hover:grayscale-0 transition-all duration-300"
+                    className="object-cover green hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
               </div>
@@ -123,7 +123,7 @@ export default function ClientsSection() {
           className="text-center"
         >
           <p className="text-2xl mb-10 text-black font-light">
-            Let's build a workspace that works for you—designed for efficiency, built for Success. 🚀
+            Let's build a workspace that works for you designed for efficiency &  built for Success. 
           </p>
 
           <div className="flex flex-col md:flex-row justify-center gap-4 mb-8">
@@ -131,7 +131,7 @@ export default function ClientsSection() {
               size="lg"
               className="bg-green-700 hover:bg-green-800 text-white flex items-center gap-2 py-6 px-8 rounded-none font-light"
             >
-              📞 +91 9326990075
+              +91 9326990075
             </Button>
             <Button
               variant="outline"

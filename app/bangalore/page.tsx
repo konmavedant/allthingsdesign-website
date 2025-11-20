@@ -13,7 +13,7 @@ export default function Bangalore() {
       name: "Tech Hub Office",
       description:
         "A cutting-edge workspace designed for a leading tech company in Bangalore, featuring innovative design and collaborative spaces.",
-      image: "/images/office-interior-4.png",
+      image: "/images/THUB-1.jpg",
     },
     {
       id: 2,

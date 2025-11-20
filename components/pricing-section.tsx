@@ -27,7 +27,7 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
       ],
       icon: Zap,
       iconColor: "text-gray-600",
-      buttonColor: "bg-gray-800 hover:bg-gray-900",
+      buttonColor: "bg-green-700 hover:bg-green-800",
     },
     {
       name: "Premium",
@@ -47,7 +47,7 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
       ],
       icon: Star,
       iconColor: "text-gray-600",
-      buttonColor: "bg-gray-800 hover:bg-gray-900",
+      buttonColor: "bg-green-700 hover:bg-green-800",
       featured: true,
     },
     {
@@ -64,12 +64,10 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
         "Premium material finishes",
         "Smart office technology integration",
         "Executive meeting rooms",
-        "Luxury amenities & finishes",
-        "White-glove service",
       ],
       icon: Crown,
       iconColor: "text-gray-600",
-      buttonColor: "bg-gray-800 hover:bg-gray-900",
+      buttonColor: "bg-green-700 hover:bg-green-800",
     },
   ]
 
@@ -112,9 +110,7 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="inline-block mb-4"
           >
-            <span className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
-              Flexible Pricing Plans
-            </span>
+
           </motion.div>
           <h2 className="text-4xl md:text-6xl font-light mb-6 text-black">
             Choose Your Perfect Plan{city ? ` in ${city}` : ""}
@@ -135,9 +131,7 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
             <motion.div
               key={tier.name}
               variants={itemVariants}
-              className={`relative group ${tier.featured ? "lg:-mt-8 lg:mb-8" : ""}`}
-              whileHover={{ y: -8, scale: 1.02 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              className={`relative ${tier.featured ? "lg:-mt-8 lg:mb-8" : ""}`}
             >
               {tier.featured && (
                 <motion.div
@@ -146,25 +140,21 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
                   transition={{ delay: 0.5 }}
                   className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10"
                 >
-                  <div className="bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium shadow-lg">
+                  <div className="bg-green-700 text-white px-6 py-2 rounded-full text-sm font-medium shadow-lg">
                     Most Popular
                   </div>
                 </motion.div>
               )}
 
               <div
-                className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${tier.bgGradient} border-2 ${tier.borderColor} shadow-xl group-hover:shadow-2xl transition-all duration-500`}
+                className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${tier.bgGradient} border-2 ${tier.borderColor} shadow-xl`}
               >
-                {/* Gradient Border Effect */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-r ${tier.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`}
-                />
 
                 <div className="relative p-8">
                   {/* Header */}
                   <div className="text-center mb-8">
                     <div
-                      className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-lg mb-4 group-hover:scale-110 transition-transform duration-300`}
+                      className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-lg mb-4`}
                     >
                       <tier.icon size={32} className={tier.iconColor} />
                     </div>
@@ -183,12 +173,12 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.1 }}
-                        className="flex items-start group/item"
+                        className="flex items-start"
                       >
-                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center mr-3 group-hover/item:bg-gray-200 transition-colors">
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center mr-3">
                           <Check size={14} className="text-gray-600" />
                         </div>
-                        <span className="text-gray-700 leading-relaxed group-hover/item:text-gray-900 transition-colors">
+                        <span className="text-gray-700 leading-relaxed">
                           {feature}
                         </span>
                       </motion.div>
@@ -196,14 +186,12 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
                   </div>
 
                   {/* CTA Button */}
-                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                    <Button
-                      className={`w-full ${tier.buttonColor} text-white py-4 rounded-xl font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300 border-0`}
-                      onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                    >
-                      Get Started
-                    </Button>
-                  </motion.div>
+                  <Button
+                    className={`w-full ${tier.buttonColor} text-white py-4 rounded-xl font-medium text-lg shadow-lg border-0`}
+                    onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                  >
+                    Get Started
+                  </Button>
                 </div>
               </div>
             </motion.div>

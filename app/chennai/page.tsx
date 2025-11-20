@@ -10,10 +10,10 @@ export default function Chennai() {
   const cityProjects = [
     {
       id: 1,
-      name: "Trend India Ekkatuthangal",
+      name: "Trend India OMR",
       description:
         "A contemporary office space designed for a fashion brand in Chennai, featuring elegant design elements and functional work areas.",
-      image: "/images/office-interior-3.png",
+      image: "/images/OMR-1.jpeg",
     },
     {
       id: 2,
