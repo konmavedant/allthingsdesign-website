@@ -2,7 +2,8 @@
 
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
-import { useEffect, useState } from "react"
+import Image from "next/image"
+import { useEffect, useMemo, useState } from "react"
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -111,22 +112,37 @@ export default function Hero() {
     })
   }
 
+  const blurDataURL = useMemo(
+    () =>
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect fill='%232b2b2b' width='1' height='1'/%3E%3C/svg%3E",
+    []
+  )
+
   return (
     <section id="hero-section" className="relative min-h-screen flex items-center overflow-hidden bg-white">
       {/* Background Images - All slides rendered with opacity control */}
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${
+          className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out overflow-hidden ${
             currentSlide === index ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div
-            className="w-full h-full bg-cover bg-center bg-no-repeat"
+          <Image
+            src={slide.image}
+            alt={slide.title}
+            fill
+            priority={index === 0}
+            loading={index === 0 ? "eager" : "lazy"}
+            sizes="100vw"
+            quality={80}
+            placeholder="blur"
+            blurDataURL={blurDataURL}
+            className={`object-cover object-center transition-[transform] duration-[5000ms] ease-in-out ${
+              currentSlide === index ? "scale-105" : "scale-100"
+            }`}
             style={{
-              backgroundImage: `url('${slide.image}')`,
-              filter: "brightness(1.2) contrast(1.1) saturate(1.15)",
-              animation: currentSlide === index ? "zoomInOut 5s ease-in-out infinite" : "none",
+              filter: "brightness(1.15) contrast(1.1) saturate(1.1)",
             }}
           />
         </div>
@@ -227,15 +243,6 @@ export default function Hero() {
       </div>
 
       <style jsx>{`
-        @keyframes zoomInOut {
-          0%,
-          100% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.05);
-          }
-        }
         .highlight-text::after {
           content: '';
           position: absolute;

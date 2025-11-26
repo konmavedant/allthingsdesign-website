@@ -42,7 +42,10 @@ export default function Navbar() {
       ([entry]) => {
         setIsHeroCovered(!entry.isIntersecting)
       },
-      { threshold: 0.05 }
+      {
+        threshold: 0,
+        rootMargin: "-120px 0px 0px 0px",
+      }
     )
 
     observer.observe(heroSection)
@@ -52,7 +55,7 @@ export default function Navbar() {
     }
   }, [pathname])
 
-  const shouldShowNav = pathname !== "/" || isHeroCovered
+  const shouldShowNav = pathname !== "/" || isHeroCovered || isScrolled
   const visibilityClasses = shouldShowNav ? "translate-y-0 opacity-100 pointer-events-auto" : "-translate-y-full opacity-0 pointer-events-none"
 
   return (
@@ -60,9 +63,9 @@ export default function Navbar() {
       initial={false}
       animate={{ y: shouldShowNav ? 0 : -20, opacity: shouldShowNav ? 1 : 0 }}
       transition={{ duration: 0.3 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${visibilityClasses} ${
-        shouldShowNav ? "bg-white/60 backdrop-blur-md text-black" : "text-white"
-      } ${shouldShowNav && isScrolled ? "shadow-lg" : ""}`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 bg-white text-black shadow-sm ${visibilityClasses} ${
+        shouldShowNav && isScrolled ? "shadow-lg" : ""
+      }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
         <Link href="/" className="flex items-center">

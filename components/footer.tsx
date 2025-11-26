@@ -64,9 +64,6 @@ export default function Footer() {
               <Link href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Linkedin size={24} />
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter size={24} />
-              </Link>
             </div>
           </motion.div>
 
