@@ -10,23 +10,23 @@ export default function NaviMumbai() {
   const cityProjects = [
     {
       id: 1,
-      name: "Tech Park Office",
+      name: "Tungsten Gym",
       description:
-        "A modern workspace designed for a growing tech company in Navi Mumbai, featuring collaborative areas and smart office solutions.",
-      image: "/images/office-interior-3.png",
+        "A modern gym designed for a growing gym in Navi Mumbai, featuring collaborative areas and smart office solutions.",
+      image: "/images/tungsten.jpeg",
     },
     {
       id: 2,
       name: "Financial Services Hub",
       description:
         "An elegant office space designed for a financial services firm in Navi Mumbai, balancing professionalism with employee comfort.",
-      image: "/images/office-interior-8.png",
+      image: "/images/hero-slide-3.jpeg",
     },
   ]
 
   return (
     <div className="min-h-screen bg-white">
-      <CityHero city="Navi Mumbai" image="/images/office-interior-4.png" />
+      <CityHero city="Navi Mumbai" image="/images/hero-slide-2.jpeg" />
       <WhyChooseSection city="Navi Mumbai" />
       <CityProjects city="Navi Mumbai" projects={cityProjects} />
       <PricingSection city="Navi Mumbai" />

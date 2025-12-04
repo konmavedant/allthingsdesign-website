@@ -26,11 +26,11 @@ export default function Bangalore() {
 
   return (
     <div className="min-h-screen bg-white">
-      <CityHero city="Bangalore" image="/images/office-interior-8.png" />
+      <CityHero city="Bangalore" image="/images/elleys.jpg" />
       <WhyChooseSection city="Bangalore" />
       <CityProjects city="Bangalore" projects={cityProjects} />
       <PricingSection city="Bangalore" />
-      <CityCTA city="Bangalore" image="/images/office-interior-1.png" />
+      <CityCTA city="Bangalore" image="/images/gallery-5.jpg" />
     </div>
   )
 }

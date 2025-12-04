@@ -49,7 +49,7 @@ export default function Footer() {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <Image src="/images/ALT-LOGO_WHITE.png" alt="All Things Design" width={150} height={100} className="h-16 w-auto" />
+            <Image src="/images/header-logo.png" alt="All Things Design" width={150} height={100} className="h-16 w-auto" />
             <p className="text-gray-400 leading-relaxed">
               Transform your workspace in just 75 days with high-performance, brand-driven designs that enhance
               productivity.
@@ -61,9 +61,9 @@ export default function Footer() {
               <Link href="https://www.instagram.com/allthingsdesign.in" className="text-gray-400 hover:text-white transition-colors">
                 <Instagram size={24} />
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+              <Link href="https://www.linkedin.com/company/all-things-design-mumbai" className="text-gray-400 hover:text-white transition-colors">
                 <Linkedin size={24} />
-              </Link>
+              </Link>  
             </div>
           </motion.div>
 

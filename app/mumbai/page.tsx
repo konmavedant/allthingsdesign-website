@@ -20,17 +20,17 @@ export default function Mumbai() {
       name: "Corporate Headquarters",
       description:
         "An elegant and sophisticated office design for a financial services firm in Mumbai's business district, balancing professionalism with comfort.",
-      image: "/images/office-interior-5.png",
+      image: "/images/elleys.jpg",
     },
   ]
 
   return (
     <div className="min-h-screen bg-white">
-      <CityHero city="Mumbai" image="/images/office-interior-1.png" />
+      <CityHero city="Mumbai" image="/images/hero-slide-1.jpeg" />
       <WhyChooseSection city="Mumbai" />
       <CityProjects city="Mumbai" projects={cityProjects} />
       <PricingSection city="Mumbai" />
-      <CityCTA city="Mumbai" image="/images/office-interior-3.png" />
+      <CityCTA city="Mumbai" image="/images/HOS-2.jpg" />
     </div>
   )
 }

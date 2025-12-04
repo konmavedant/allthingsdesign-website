@@ -20,17 +20,17 @@ export default function Delhi() {
       name: "Media Agency Office",
       description:
         "A creative and dynamic workspace designed for a media agency in Delhi, balancing functionality with inspiring design elements.",
-      image: "/images/dentos.jpg",
+      image: "/images/elleys.jpg",
     },
   ]
 
   return (
     <div className="min-h-screen bg-white">
-      <CityHero city="Delhi" image="/images/office-interior-6.png" />
+      <CityHero city="Delhi" image="/images/gallery-8.jpg" />
       <WhyChooseSection city="Delhi" />
       <CityProjects city="Delhi" projects={cityProjects} />
       <PricingSection city="Delhi" />
-      <CityCTA city="Delhi" image="/images/office-interior-7.png" />
+      <CityCTA city="Delhi" image="/images/gallery-9.jpg" />
     </div>
   )
 }

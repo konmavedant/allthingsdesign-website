@@ -27,25 +27,25 @@ export default function ProjectsShowcase() {
     {
       id: 3,
       image: "/images/THUB-1.jpg",
-      name: "Tech Hub Office",
+      name: "Trend India",
       location: "Bangalore",
     },
     {
       id: 4,
-      image: "/images/dentos.jpg",
-      name: "Corporate Center",
-      location: "Delhi",
+      image: "/images/tungsten.jpeg",
+      name: "Tungsten Gym",
+      location: "Navi Mumbai",
     },
     {
       id: 5,
-      image: "/images/HOS-2.jpg",
-      name: "Creative Studio",
+      image: "/images/trend.jpg",
+      name: "Trend India Ekkattungal",
       location: "Pune",
     },
     {
       id: 6,
-      image: "/images/THUB-2.jpg",
-      name: "Executive Suites",
+      image: "/images/trend1.jpg",
+      name: "Trend India Karuna",
       location: "Hyderabad",
     },
   ]

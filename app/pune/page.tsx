@@ -13,24 +13,24 @@ export default function Pune() {
       name: "Creative Studio",
       description:
         "A vibrant and inspiring workspace designed for a creative agency in Pune, featuring flexible work areas and innovative design elements.",
-      image: "/images/office-interior-6.png",
-    },
+      image: "/images/gallery-7.jpg",
+    },    
     {
       id: 2,
       name: "Tech Innovation Hub",
       description:
         "A modern office space for a tech startup in Pune's IT corridor, designed to foster innovation and collaboration among team members.",
-      image: "/images/office-interior-4.png",
+      image: "/images/trend.jpg",
     },
   ]
 
   return (
     <div className="min-h-screen bg-white">
-      <CityHero city="Pune" image="/images/office-interior-7.png" />
+      <CityHero city="Pune" image="/images/trend1.jpg" />
       <WhyChooseSection city="Pune" />
       <CityProjects city="Pune" projects={cityProjects} />
       <PricingSection city="Pune" />
-      <CityCTA city="Pune" image="/images/office-interior-8.png" />
+      <CityCTA city="Pune" image="/images/HOS-1.jpg" />
     </div>
   )
 }

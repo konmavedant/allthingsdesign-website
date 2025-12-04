@@ -7,100 +7,99 @@ export default function Gallery() {
   const projects = [
     {
       id: 1,
-      name: "Mindtickle",
       description: "Designing for Diversity and Experience, Designing for Efficiency and Adaptability",
       image: "/images/cogo.jpg",
     },
     {
       id: 2,
-      name: "Coreco Technologies",
       description: "Designing for Diversity and Experience",
-      image: "/images/elleys.jpg",
+      image: "/images/elr-2.jpg",
     },
     {
       id: 3,
-      name: "Biophilic Design Studio",
+      
       description: "Connecting Nature with Modern Workspaces",
       image: "/images/HOS-1.jpg",
     },
     {
       id: 4,
-      name: "Executive Innovation Hub",
+      
       description: "Sophisticated Spaces for Leadership and Growth",
       image: "/images/HOS-2.jpg",
     },
     {
       id: 5,
-      name: "Tech Startup Hub",
+      
       description: "Modern workspaces for innovation and collaboration",
       image: "/images/THUB-1.jpg",
     },
     {
       id: 6,
-      name: "Co-working Space",
+      
       description: "Flexible environments for dynamic teams",
       image: "/images/THUB-2.jpg",
     },
     {
       id: 7,
-      name: "Law Firm Office",
+      
       description: "Professional spaces for legal excellence",
       image: "/images/dentos.jpg",
     },
     {
       id: 8,
-      name: "Healthcare Office",
+      
       description: "Healing environments for wellness professionals",
       image: "/images/OMR-1.jpeg",
     },
     {
       id: 9,
-      name: "Creative Agency Space",
+      
       description: "Inspiring environments for creative minds",
       image: "/images/gallery-9.jpg",
     },
     {
       id: 10,
-      name: "Financial Services Office",
+      
       description: "Trust-building spaces for financial professionals",
-      image: "/images/gallery-1.jpg",
+      image: "/images/elr-1.jpg",
     },
     {
       id: 11,
-      name: "E-commerce Headquarters",
+      
       description: "Scalable spaces for growing businesses",
       image: "/images/gallery-2.jpeg",    
     },
     {
       id: 12,
-      name: "Investment Banking Office",
+      
       description: "Sophisticated spaces for high-stakes decisions",
       image: "/images/gallery-3.jpeg",
     },
     {
       id: 13,
-      name: "Software Development Center",
+      
       description: "Productivity-focused environments for developers",
       image: "/images/gallery-4.jpeg",
     },
     {
       id: 14,
-      name: "Marketing Agency",
+      
       description: "Dynamic spaces for brand storytelling",
       image: "/images/gallery-5.jpg",
     },
     {
       id: 15,
-      name: "Pharmaceutical Office",
+      
       description: "Research-driven spaces for medical innovation",
       image: "/images/gallery-6.jpg",   
     },
     {
       id: 16,
-      name: "Innovation Lab",
+      
       description: "Experimental spaces for breakthrough ideas",
       image: "/images/gallery-7.jpg",
     },
+    
   ]
 
 

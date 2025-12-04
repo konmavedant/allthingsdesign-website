@@ -72,7 +72,16 @@ export default function CityHero({ city, image }: CityHeroProps) {
                 </Label>
                 <Input id="area" className="mt-1" placeholder="Project area" />
               </div>
-              <Button className="w-full bg-green-600 hover:bg-green-700 text-white">Get Free Quote</Button>
+              <Button
+                className="w-full bg-green-600 hover:bg-green-700 text-white"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open("https://calendly.com/allthingsdesign-work/15min", "_blank");
+                }}
+                type="button"
+              >
+                Get Free Quote
+              </Button>
             </form>
           </motion.div>
         </div>

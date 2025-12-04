@@ -9,22 +9,22 @@ export default function About() {
       id: 1,
       name: "Urvi Kataria",
       position: "Founder & Principal Designer",
-      image: "/images/office-interior-1.png",
+      image: "/images/urvi.jpg",
       bio: "With over 15 years of experience in interior design, Urvi leads our creative vision and ensures every project reflects our commitment to excellence.",
     },
     {
       id: 2,
+      name: "Naofil Khatib",
+      position: "Co-Founder",
+      image: "/images/naofil.jpeg",
+      bio: "Naofil brings a wealth of experience in project management and client relations, ensuring smooth communication and successful project delivery.",
+    },
+    {
+      id: 3,
       name: "Anuja Kadam",
       position: "Growth Manager",
       image: "/images/anuja.jpeg",
       bio: "Anuja specializes in modern office layouts and sustainable design practices, bringing innovation to every workspace we create.",
-    },
-    {
-      id: 3,
-      name: "Amit Patel",
-      position: "Project Manager",
-      image: "/images/office-interior-3.png",
-      bio: "Amit ensures seamless project execution and timely delivery, coordinating with our team and clients to exceed expectations.",
     },
     {
       id: 4,
@@ -189,13 +189,13 @@ export default function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="flex flex-col md:flex-row justify-center items-center gap-8"
           >
-            {teamMembers.map((member, index) => (
+            {teamMembers.slice(0, 3).map((member, index) => (
               <motion.div
                 key={member.id}
                 variants={itemVariants}
-                className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105"
+                className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 w-full max-w-xs"
               >
                 <div className="relative h-64 overflow-hidden">
                   <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover" />

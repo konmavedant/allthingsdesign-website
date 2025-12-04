@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, type Variants } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Check, Star, Zap, Crown } from "lucide-react"
 
@@ -71,7 +71,7 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
     },
   ]
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -81,7 +81,7 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
     },
   }
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 40, scale: 0.95 },
     visible: {
       opacity: 1,
@@ -89,7 +89,7 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
       scale: 1,
       transition: {
         duration: 0.7,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: [0.25, 0.46, 0.45, 0.94] as const,
       },
     },
   }
@@ -130,7 +130,10 @@ export default function PricingSection({ city = "" }: PricingSectionProps) {
           {pricingTiers.map((tier, index) => (
             <motion.div
               key={tier.name}
+              initial="hidden"
+              whileInView="visible"
               variants={itemVariants}
+              viewport={{ once: true, amount: 0.1 }}
               className={`relative ${tier.featured ? "lg:-mt-8 lg:mb-8" : ""}`}
             >
               {tier.featured && (

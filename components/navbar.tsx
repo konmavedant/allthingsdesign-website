@@ -69,7 +69,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
         <Link href="/" className="flex items-center">
-          <Image src="/images/ALT-LOGO.png" alt="All Things Design" width={120} height={70} className="h-12 w-auto" />
+          <Image src="/images/header-logo.png" alt="All Things Design" width={120} height={70} className="h-12 w-auto" />
         </Link>
 
         {/* Desktop Menu */}

@@ -17,10 +17,10 @@ export default function Chennai() {
     },
     {
       id: 2,
-      name: "Software Development Center",
+      name: "Development Center",
       description:
         "A modern tech office in Chennai's IT corridor, designed to enhance productivity and team collaboration with smart space planning.",
-      image: "/images/office-interior-5.png",
+      image: "/images/elleys.jpg",
     },
   ]
 
@@ -30,7 +30,7 @@ export default function Chennai() {
       <WhyChooseSection city="Chennai" />
       <CityProjects city="Chennai" projects={cityProjects} />
       <PricingSection city="Chennai" />
-      <CityCTA city="Chennai" image="/images/office-interior-4.png" />
+      <CityCTA city="Chennai" image="/images/office-interior-3.png" />
     </div>
   )
 }
