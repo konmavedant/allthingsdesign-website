@@ -167,10 +167,18 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-2 md:gap-4">
             <p className="text-gray-500 text-sm">
               © {new Date().getFullYear()} All Things Design. All rights reserved.
             </p>
+            <Link
+              href="https://enlightenintelligence.framer.ai/"
+              className="text-gray-500 text-sm md:text-right hover:text-white transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Designed with 💖 by Enlighten Intelligence
+            </Link>
           </div>
         </div>
       </div>
